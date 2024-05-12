@@ -1,5 +1,7 @@
 print('Welcome to LearnIt!')
 import pickle
+from tkinter import *
+
 
 
 def usernamepass_def(x, y):
@@ -174,7 +176,7 @@ def login():
                         pickle.dump(recordarme, file)
                 if rem == 'no' or rem == 'n':
                     dont_log = False
-                from CALORIECOUNTERNOWAY import calorie_shedule
+                from Learn_it_api import calorie_shedule
                 calorie_shedule(str(username))
                 backer = 1
                 dont_log = False
@@ -255,6 +257,24 @@ def entering():
         registration()
         backer = 0
         entering()
+def run():
+    new_text = Label(text = 'you just clicked me', fg = 'yellow', bg = 'black')
+    new_text.place(x = 195, y = 230)
+def run2():
+    name1 = name_storage.get()
+    print(name1)
+    name.delete(0, END)
 
+screen = Tk()
+screen.title("Learn_It!")
+screen.geometry("500x500")
+welcome_text = Label(text='Welcome to Learn_It!', fg='yellow', bg='black')
+welcome_text.pack()
+click_me = Button(text='Click me', fg='orange', bg='black', height = 2, width = 7, command = run2)
+click_me.place(x = 10, y = 20)
 
-entering()
+name_storage = StringVar()
+name = Entry(textvariable= name_storage)
+name.pack()
+screen.mainloop()
+# entering()
