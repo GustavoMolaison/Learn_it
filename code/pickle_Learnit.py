@@ -8,5 +8,5 @@ dont_log = False
 with open('dont_log_file', 'wb') as file:
     pickle.dump(dont_log, file)
 username_and_password = {}
-with open ('usernames_and_passwords', 'wb') as file:
+with open('usernames_and_passwords', 'wb') as file:
     pickle.dump(username_and_password, file)

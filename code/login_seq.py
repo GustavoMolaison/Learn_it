@@ -240,8 +240,8 @@ def entering():
             with open('recordarme_file', 'rb') as file:
                 recordarme = pickle.load(file)
             username = recordarme[0]
-            from CALORIECOUNTERNOWAY import calorie_shedule
-            calorie_shedule(str(username))
+            # from CALORIECOUNTERNOWAY import calorie_shedule
+            # calorie_shedule(str(username))
             dont_log = False
             with open('dont_log_file', 'wb') as file:
                 pickle.dump(dont_log, file)
@@ -257,24 +257,24 @@ def entering():
         registration()
         backer = 0
         entering()
-def run():
-    new_text = Label(text = 'you just clicked me', fg = 'yellow', bg = 'black')
-    new_text.place(x = 195, y = 230)
-def run2():
-    name1 = name_storage.get()
-    print(name1)
-    name.delete(0, END)
-
-screen = Tk()
-screen.title("Learn_It!")
-screen.geometry("500x500")
-welcome_text = Label(text='Welcome to Learn_It!', fg='yellow', bg='black')
-welcome_text.pack()
-click_me = Button(text='Click me', fg='orange', bg='black', height = 2, width = 7, command = run2)
-click_me.place(x = 10, y = 20)
-
-name_storage = StringVar()
-name = Entry(textvariable= name_storage)
-name.pack()
-screen.mainloop()
-# entering()
+# def run():
+#     new_text = Label(text = 'you just clicked me', fg = 'yellow', bg = 'black')
+#     new_text.place(x = 195, y = 230)
+# def run2():
+#     name1 = name_storage.get()
+#     print(name1)
+#     name.delete(0, END)
+#
+# screen = Tk()
+# screen.title("Learn_It!")
+# screen.geometry("500x500")
+# welcome_text = Label(text='Welcome to Learn_It!', fg='yellow', bg='black')
+# welcome_text.pack()
+# click_me = Button(text='Click me', fg='orange', bg='black', height = 2, width = 7, command = run2)
+# click_me.place(x = 10, y = 20)
+#
+# name_storage = StringVar()
+# name = Entry(textvariable= name_storage)
+# name.pack()
+# screen.mainloop()
+entering()
