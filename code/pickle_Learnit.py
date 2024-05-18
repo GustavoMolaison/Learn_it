@@ -12,6 +12,9 @@ import pickle
 #     pickle.dump(username_and_password, file)
 
 'GAFIKA'
-unknown_word_pickle = None
-with open('clicked_buttons_picklefile', 'wb') as file:
-    pickle.dump(unknown_word_pickle, file)
+unknown_word_pickle_esp = None
+unknown_word_pickle_eng = None
+with open('clicked_buttons_picklefile_esp', 'wb') as file:
+    pickle.dump(unknown_word_pickle_esp, file)
+with open('clicked_buttons_picklefile_eng', 'wb') as file:
+    pickle.dump(unknown_word_pickle_eng, file)
