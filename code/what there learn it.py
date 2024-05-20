@@ -12,9 +12,12 @@ with open('clicked_buttons_picklefile_esp', 'rb') as file:
     unknown_word_pickle_esp = pickle.load(file)
 with open('clicked_buttons_picklefile_eng', 'rb') as file:
     unknown_word_pickle_eng = pickle.load(file)
+with open('unknown_button_file', 'rb') as file:
+    unknown_button_pickle = pickle.load(file)
 
 print(recordarme)
 print(username_and_password)
 print(dont_log)
 print(unknown_word_pickle_esp)
 print(unknown_word_pickle_eng)
+print(unknown_button_pickle)
