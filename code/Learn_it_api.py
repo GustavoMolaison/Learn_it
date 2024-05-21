@@ -1,13 +1,17 @@
 from tkinter import *
 import pickle
-global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button
+global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, stay_green
 clicked_buttons_count_eng: int = 0
 clicked_buttons_count_esp: int = 0
-previous_button = None
+previous_button_esp = None
+previous_button_eng = None
+stay_green=[]
+def nothing():
+    return None
 def spanish_button_func():
     global button_connect
     def button_connect(unknown_button, unknown_word, clicked_buttons_pickle = []):
-        global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_esp_word, previous_eng_word, previous_button
+        global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_esp_word, previous_eng_word, previous_button_esp, previous_button_eng,stay_green
         correct_value = 0
         no_yellow = False
 
@@ -19,64 +23,68 @@ def spanish_button_func():
         if clicked_buttons_count_esp > 1:
 
             if previous_esp_word == 'casa':
-                spanish_word0.configure( fg='orange', command=lambda:button_connect(spanish_word0, 'casa'))
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
+                if not 'stay green1' in stay_green:
+                 spanish_word0.configure( fg='orange', command=lambda:button_connect(spanish_word0, 'casa'))
+                 if not clicked_buttons_count_esp == 0:
+                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
             if previous_esp_word == 'para':
-                spanish_word1.configure(fg='orange', command=lambda: button_connect(spanish_word1, 'para'))
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
+                if not 'stay green2' in stay_green:
+                 spanish_word1.configure(fg='orange', command=lambda: button_connect(spanish_word1, 'para'))
+                 if not clicked_buttons_count_esp == 0:
+                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
             if previous_esp_word == 'mismo':
-                spanish_word2.configure(fg='orange', command=lambda: button_connect(spanish_word2,'mismo'))
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
+                if not 'stay green3' in stay_green:
+                 spanish_word2.configure(fg='orange', command=lambda: button_connect(spanish_word2,'mismo'))
+                 if not clicked_buttons_count_esp == 0:
+                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
             if previous_esp_word == 'acostar':
-                spanish_word3.configure(fg='orange', command=lambda: button_connect(spanish_word3, 'acostar'))
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
+                if not 'stay green4' in stay_green:
+                 spanish_word3.configure(fg='orange', command=lambda: button_connect(spanish_word3, 'acostar'))
+                 if not clicked_buttons_count_esp == 0:
+                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
             if previous_esp_word == 'pared':
-                spanish_word4.configure(fg='orange', command=lambda: button_connect(spanish_word4, 'pared'))
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
+                if not 'stay green5' in stay_green:
+                 spanish_word4.configure(fg='orange', command=lambda: button_connect(spanish_word4, 'pared'))
+                 if not clicked_buttons_count_esp == 0:
+                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
 
         if clicked_buttons_count_eng > 1:
             if previous_eng_word == 'house':
-                english_word0.configure( fg='orange', command=lambda:button_connect(english_word0, 'house'))
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
+                if not 'stay green1' in stay_green:
+                 english_word0.configure( fg='orange', command=lambda:button_connect(english_word0, 'house'))
+                 if not clicked_buttons_count_eng == 0:
+                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
             if previous_eng_word == 'for':
-                english_word1.configure(fg='orange', command=lambda: button_connect(english_word1, 'for'))
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
+                if not 'stay green2' in stay_green:
+                 english_word1.configure(fg='orange', command=lambda: button_connect(english_word1, 'for'))
+                 if not clicked_buttons_count_eng == 0:
+                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
             if previous_eng_word == 'same':
-                english_word2.configure(fg='orange', command=lambda: button_connect(english_word2, 'same'))
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
+                if not 'stay green3' in stay_green:
+                 english_word2.configure(fg='orange', command=lambda: button_connect(english_word2, 'same'))
+                 if not clicked_buttons_count_eng == 0:
+                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
             if previous_eng_word == 'go to bed':
-                english_word3.configure(fg='orange', command=lambda: button_connect(english_word3,'go to bed'))
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
+                if not 'stay green4' in stay_green:
+                 english_word3.configure(fg='orange', command=lambda: button_connect(english_word3,'go to bed'))
+                 if not clicked_buttons_count_eng == 0:
+                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
             if previous_eng_word == 'wall':
-                english_word4.configure(fg='orange', command=lambda: button_connect(english_word4, 'wall'))
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
+                if not 'stay green5' in stay_green:
+                 english_word4.configure(fg='orange', command=lambda: button_connect(english_word4, 'wall'))
+                 if not clicked_buttons_count_eng == 0:
+                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
 
 
 
         try:
-         print(unknown_word)
-         print(previous_button)
-         if  previous_button == button_conections_dict[str(unknown_button)]:
-             print('dziala')
+         if  previous_button_esp == button_conections_dict[str(unknown_button)] or previous_button_eng == button_conections_dict[str(unknown_button)]:
              correct_value = 1
         except KeyError:
          try:
-          print('2')
-          if str(unknown_button) == button_conections_dict[previous_button]:
-             print('dziala')
+          if str(unknown_button) == button_conections_dict[previous_button_esp] or str(unknown_button) == button_conections_dict[previous_button_eng]:
              correct_value = 1
          except KeyError:
-             print('3')
              pass
         # except UnboundLocalError:
         #     print('undounderrior')
@@ -84,38 +92,43 @@ def spanish_button_func():
         if correct_value == 1:
             if unknown_word == 'casa' or unknown_word == 'house':
                 no_yellow = True
-                spanish_word0.configure(fg='green', command=None)
-                english_word0.configure(fg='green', command=None)
+                stay_green.append('stay green1')
+                spanish_word0.config(fg='green', command=nothing())
+                english_word0.config(fg='green', command=nothing())
 
             elif unknown_word == 'para' or unknown_word == 'for':
                 no_yellow = True
-                spanish_word1.configure(fg='purple', command=None)
-                english_word1.configure(fg='purple', command=None)
+                stay_green.append('stay green2')
+                spanish_word1.configure(fg='green', command=None)
+                english_word1.configure(fg='green', command=None)
 
             elif unknown_word == 'mismo' or unknown_word == 'same':
                 no_yellow = True
-                spanish_word2.configure(fg='purple', command=None)
-                english_word2.configure(fg='purple', command=None)
+                stay_green.append('stay green3')
+                spanish_word2.configure(fg='green', command=None)
+                english_word2.configure(fg='green', command=None)
 
             elif unknown_word == 'acostar' or unknown_word == 'go to bed':
                 no_yellow = True
-                spanish_word3.configure(fg='purple', command=None)
-                english_word3.configure(fg='purple', command=None)
+                stay_green.append('stay green4')
+                spanish_word3.configure(fg='green', command=None)
+                english_word3.configure(fg='green', command=None)
 
             elif unknown_word == 'pared' or unknown_word == 'wall':
                 no_yellow = True
-                spanish_word4.configure(fg='purple', command=None)
-                english_word4.configure(fg='purple', command=None)
+                stay_green.append('stay green5')
+                spanish_word4.configure(fg='green', command=None)
+                english_word4.configure(fg='green', command=None)
 
         if unknown_button == spanish_word0 or unknown_button == spanish_word1 or unknown_button == spanish_word2 or unknown_button == spanish_word3 or unknown_button == spanish_word4:
             previous_esp_word = None
             previous_esp_word = str(unknown_word)
-
+            previous_button_esp = str(unknown_button)
         if unknown_button == english_word0 or unknown_button == english_word1 or unknown_button == english_word2 or unknown_button == english_word3 or unknown_button == english_word4:
             previous_eng_word = None
             previous_eng_word = str(unknown_word)
+            previous_button_eng = str(unknown_button)
 
-        previous_button = str(unknown_button)
         def button_connect2(unknown_button2):
             global clicked_buttons_count_esp, clicked_buttons_count_eng, previous_button
             previous_button = None
