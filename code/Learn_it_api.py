@@ -1,13 +1,15 @@
 from tkinter import *
 import pickle
-global  clicked_buttons_count_eng, clicked_buttons_count_esp
+global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button
 clicked_buttons_count_eng: int = 0
 clicked_buttons_count_esp: int = 0
+previous_button = None
 def spanish_button_func():
     global button_connect
-    def button_connect(unknown_button, unknown_word, clicked_buttons_pickle = [],):
-        global clicked_buttons_count_eng, clicked_buttons_count_esp
+    def button_connect(unknown_button, unknown_word, clicked_buttons_pickle = []):
+        global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_esp_word, previous_eng_word, previous_button
         correct_value = 0
+        no_yellow = False
 
         if unknown_button == spanish_word0 or unknown_button == spanish_word1 or unknown_button == spanish_word2 or unknown_button == spanish_word3 or unknown_button == spanish_word4:
             clicked_buttons_count_esp = clicked_buttons_count_esp + 1
@@ -15,128 +17,108 @@ def spanish_button_func():
             clicked_buttons_count_eng = clicked_buttons_count_eng + 1
 
         if clicked_buttons_count_esp > 1:
-            with open('clicked_buttons_picklefile_esp', 'rb') as file:
-                unknown_word_pickle_esp = pickle.load(file)
-            if unknown_word_pickle_esp == 'casa':
+
+            if previous_esp_word == 'casa':
                 spanish_word0.configure( fg='orange', command=lambda:button_connect(spanish_word0, 'casa'))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-            if unknown_word_pickle_esp == 'para':
+            if previous_esp_word == 'para':
                 spanish_word1.configure(fg='orange', command=lambda: button_connect(spanish_word1, 'para'))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-            if unknown_word_pickle_esp == 'mismo':
+            if previous_esp_word == 'mismo':
                 spanish_word2.configure(fg='orange', command=lambda: button_connect(spanish_word2,'mismo'))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-            if unknown_word_pickle_esp == 'acostar':
+            if previous_esp_word == 'acostar':
                 spanish_word3.configure(fg='orange', command=lambda: button_connect(spanish_word3, 'acostar'))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-            if unknown_word_pickle_esp == 'pared':
+            if previous_esp_word == 'pared':
                 spanish_word4.configure(fg='orange', command=lambda: button_connect(spanish_word4, 'pared'))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
 
         if clicked_buttons_count_eng > 1:
-            with open('clicked_buttons_picklefile_eng', 'rb') as file:
-                unknown_word_pickle_eng = pickle.load(file)
-            if unknown_word_pickle_eng == 'house':
+            if previous_eng_word == 'house':
                 english_word0.configure( fg='orange', command=lambda:button_connect(english_word0, 'house'))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-            if unknown_word_pickle_eng == 'for':
+            if previous_eng_word == 'for':
                 english_word1.configure(fg='orange', command=lambda: button_connect(english_word1, 'for'))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-            if unknown_word_pickle_eng == 'same':
+            if previous_eng_word == 'same':
                 english_word2.configure(fg='orange', command=lambda: button_connect(english_word2, 'same'))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-            if unknown_word_pickle_eng == 'go to bed':
+            if previous_eng_word == 'go to bed':
                 english_word3.configure(fg='orange', command=lambda: button_connect(english_word3,'go to bed'))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-            if unknown_word_pickle_eng == 'wall':
+            if previous_eng_word == 'wall':
                 english_word4.configure(fg='orange', command=lambda: button_connect(english_word4, 'wall'))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
 
-        with open('unknown_button_file', 'rb') as file:
-                unknown_button_pickle = pickle.load(file)
+
+
         try:
-         if  unknown_button_pickle == button_conections_dict[str(unknown_button)]:
+         print(unknown_word)
+         print(previous_button)
+         if  previous_button == button_conections_dict[str(unknown_button)]:
              print('dziala')
              correct_value = 1
         except KeyError:
          try:
-          if str(unknown_button) == button_conections_dict[unknown_button_pickle]:
+          print('2')
+          if str(unknown_button) == button_conections_dict[previous_button]:
              print('dziala')
              correct_value = 1
          except KeyError:
+             print('3')
              pass
+        # except UnboundLocalError:
+        #     print('undounderrior')
+        #     pass
         if correct_value == 1:
-            with open('clicked_buttons_picklefile_esp', 'rb') as file:
-                unknown_word_pickle_esp = pickle.load(file)
-            if unknown_word_pickle_esp == 'casa':
-                spanish_word0.configure(fg='purple', command= None)
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-            if unknown_word_pickle_esp == 'para':
-                spanish_word1.configure(fg='purple', command= None)
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-            if unknown_word_pickle_esp == 'mismo':
-                spanish_word2.configure(fg='purple', command= None)
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-            if unknown_word_pickle_esp == 'acostar':
-                spanish_word3.configure(fg='purple', command= None)
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-            if unknown_word_pickle_esp == 'pared':
-                spanish_word4.configure(fg='purple', command= None)
-                if not clicked_buttons_count_esp == 0:
-                    clicked_buttons_count_esp = clicked_buttons_count_esp - 1
+            if unknown_word == 'casa' or unknown_word == 'house':
+                no_yellow = True
+                spanish_word0.configure(fg='green', command=None)
+                english_word0.configure(fg='green', command=None)
 
-            with open('clicked_buttons_picklefile_eng', 'rb') as file:
-                unknown_word_pickle_eng = pickle.load(file)
-            if unknown_word_pickle_eng == 'house':
-                english_word0.configure(fg='purple', command= None)
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-            if unknown_word_pickle_eng == 'for':
-                english_word1.configure(fg='purple', command= None)
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-            if unknown_word_pickle_eng == 'same':
-                english_word2.configure(fg='purple', command= None)
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-            if unknown_word_pickle_eng == 'go to bed':
-                english_word3.configure(fg='purple', command= None)
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-            if unknown_word_pickle_eng == 'wall':
-                english_word4.configure(fg='purple', command= None)
-                if not clicked_buttons_count_eng == 0:
-                    clicked_buttons_count_eng = clicked_buttons_count_eng - 1
+            elif unknown_word == 'para' or unknown_word == 'for':
+                no_yellow = True
+                spanish_word1.configure(fg='purple', command=None)
+                english_word1.configure(fg='purple', command=None)
 
+            elif unknown_word == 'mismo' or unknown_word == 'same':
+                no_yellow = True
+                spanish_word2.configure(fg='purple', command=None)
+                english_word2.configure(fg='purple', command=None)
 
-        unknown_word_pickle = unknown_word
+            elif unknown_word == 'acostar' or unknown_word == 'go to bed':
+                no_yellow = True
+                spanish_word3.configure(fg='purple', command=None)
+                english_word3.configure(fg='purple', command=None)
+
+            elif unknown_word == 'pared' or unknown_word == 'wall':
+                no_yellow = True
+                spanish_word4.configure(fg='purple', command=None)
+                english_word4.configure(fg='purple', command=None)
+
         if unknown_button == spanish_word0 or unknown_button == spanish_word1 or unknown_button == spanish_word2 or unknown_button == spanish_word3 or unknown_button == spanish_word4:
-            unknown_word_pickle_esp = unknown_word
-            with open('clicked_buttons_picklefile_esp', 'wb') as file:
-                pickle.dump(unknown_word_pickle_esp, file)
+            previous_esp_word = None
+            previous_esp_word = str(unknown_word)
+
         if unknown_button == english_word0 or unknown_button == english_word1 or unknown_button == english_word2 or unknown_button == english_word3 or unknown_button == english_word4:
-            unknown_word_pickle_eng = unknown_word
-            with open('clicked_buttons_picklefile_eng', 'wb') as file:
-                pickle.dump(unknown_word_pickle_eng, file)
-        unknown_button_pickle = str(unknown_button)
-        with open('unknown_button_file', 'wb') as file:
-            pickle.dump(unknown_button_pickle, file)
+            previous_eng_word = None
+            previous_eng_word = str(unknown_word)
+
+        previous_button = str(unknown_button)
         def button_connect2(unknown_button2):
-            global clicked_buttons_count_esp, clicked_buttons_count_eng
+            global clicked_buttons_count_esp, clicked_buttons_count_eng, previous_button
+            previous_button = None
             if not clicked_buttons_count_esp == 0:
              if unknown_button == spanish_word0 or unknown_button == spanish_word1 or unknown_button == spanish_word2 or unknown_button == spanish_word3 or unknown_button == spanish_word4:
                 clicked_buttons_count_esp = clicked_buttons_count_esp - 1
@@ -144,7 +126,8 @@ def spanish_button_func():
               if unknown_button == english_word0 or unknown_button == english_word1 or unknown_button == english_word2 or unknown_button == english_word3 or unknown_button == english_word4:
                 clicked_buttons_count_eng = clicked_buttons_count_eng - 1
             unknown_button2.configure(bg='black', fg='orange', command=lambda:button_connect(unknown_button2, unknown_word))
-        unknown_button.configure(bg='black', fg='yellow', command=lambda:button_connect2(unknown_button))
+        if no_yellow == False:
+         unknown_button.configure(bg='black', fg='yellow', command=lambda:button_connect2(unknown_button))
 
 
     Learn_it_label.destroy()
