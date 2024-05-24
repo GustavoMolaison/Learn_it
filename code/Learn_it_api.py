@@ -1,6 +1,8 @@
 from tkinter import *
 import pickle
 import asyncio
+import tracemalloc
+tracemalloc.start()
 
 import time
 global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, previous_eng_word, previous_esp_word, stay_green_esp, stay_green_eng
@@ -28,12 +30,20 @@ def clear():
 def spanish_button_func():
     def uncorrect():
 
-         global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, unknown_button_f,no_yellow, stay_green_eng
+         global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, unknown_button_f,no_yellow, unknown_word_f, stay_green_eng, previous_word
          print('xd')
          no_yellow = True
-         unknown_button_f.config(fg='red')
-         previous_button.config(fg='red')
-         await asyncio.sleep(2)
+         unknown_button_f.config(fg='red', command=lambda: button_connect_spanish(unknown_button_f, unknown_word_f))
+         previous_button.config(fg='red', command=lambda: button_connect_english(previous_button, previous_word))
+         # unknown_button_f.config(fg='orange')
+         # previous_button.config(fg='orange')
+         #  previous_button.config(fg='red')
+         # async def idkxd() -> str:
+         #  unknown_button_f.config(fg='red')
+         #  previous_button.config(fg='red')
+         #  await asyncio.sleep(3)
+         #  return('xd')
+         # asyncio.run(idkxd())
 
 
 
@@ -146,7 +156,7 @@ def spanish_button_func():
 
 
     def button_connect_english(unknown_button, unknown_word):
-        global clicked_buttons_count_eng, previous_eng_word, previous_button_eng, stay_green_eng, previous_button, button_check_english, previous_esp_word, unknown_word_f, clicked_buttons_count_esp, no_yellow, unknown_button_f
+        global clicked_buttons_count_eng, previous_eng_word, previous_button_eng, stay_green_eng, previous_button, button_check_english, previous_esp_word, unknown_word_f, clicked_buttons_count_esp, previous_word, no_yellow, unknown_button_f
         correct_value = 0
         no_yellow = False
         button_check_english = str(unknown_button)
@@ -181,10 +191,12 @@ def spanish_button_func():
         previous_eng_word = str(unknown_word)
         previous_button_eng = str(unknown_button)
         previous_button = unknown_button
+        previous_word = unknown_word
 
         def button_connect22(unknown_button2):
             global clicked_buttons_count_esp, clicked_buttons_count_eng, previous_button
             previous_button = None
+            previous_word = None
 
             if not clicked_buttons_count_eng == 0:
              clicked_buttons_count_eng = clicked_buttons_count_eng - 1
@@ -192,7 +204,7 @@ def spanish_button_func():
         if no_yellow == False:
          unknown_button.configure(bg='black', fg='yellow', command=lambda:button_connect22(unknown_button))
     def button_connect_spanish(unknown_button, unknown_word):
-        global clicked_buttons_count_esp, clicked_buttons_count_esp, previous_esp_word, previous_button_esp, stay_green_esp, previous_button, button_check_spanish, clicked_buttons_count_eng, unknown_button_f, no_yellow, unknown_word_f
+        global clicked_buttons_count_esp, clicked_buttons_count_esp, previous_esp_word, previous_button_esp, stay_green_esp, previous_button, button_check_spanish, previous_word, clicked_buttons_count_eng, unknown_button_f, no_yellow, unknown_word_f
         correct_value = 0
         no_yellow = False
         unknown_button_f = unknown_button
@@ -226,11 +238,13 @@ def spanish_button_func():
 
         previous_esp_word = str(unknown_word)
         previous_button_esp = str(unknown_button)
+        previous_word = unknown_word
         previous_button = unknown_button
 
         def button_connect2(unknown_button2):
             global clicked_buttons_count_esp, clicked_buttons_count_eng, previous_button
             previous_button = None
+            previous_word = None
             if not clicked_buttons_count_esp == 0:
                 clicked_buttons_count_esp = clicked_buttons_count_esp - 1
 
