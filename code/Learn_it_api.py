@@ -1,5 +1,7 @@
 from tkinter import *
 import pickle
+import asyncio
+
 import time
 global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, previous_eng_word, previous_esp_word, stay_green_esp, stay_green_eng
 clicked_buttons_count_eng: int = 0
@@ -31,6 +33,7 @@ def spanish_button_func():
          no_yellow = True
          unknown_button_f.config(fg='red')
          previous_button.config(fg='red')
+         await asyncio.sleep(2)
 
 
 
