@@ -20,7 +20,8 @@ def clear():
     global previous_eng_word, previous_button_eng, previous_button, previous_button_esp, previous_esp_word
     previous_eng_word = None
     previous_button_eng = None
-    previous_button = None
+    previous_button= None
+    previous_word = None
     previous_button_esp = None
     previous_esp_word = None
 
@@ -28,13 +29,22 @@ def clear():
 
 
 def spanish_button_func():
+    def color_red(whatever, whatever2, fun):
+        previous_button.config(fg='orange', command=lambda: fun(whatever, whatever2))
+
     def uncorrect():
 
          global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, unknown_button_f,no_yellow, unknown_word_f, stay_green_eng, previous_word
          print('xd')
          no_yellow = True
-         unknown_button_f.config(fg='red', command=lambda: button_connect_spanish(unknown_button_f, unknown_word_f))
-         previous_button.config(fg='red', command=lambda: button_connect_english(previous_button, previous_word))
+         unknown_button_f.config(fg='red')
+         previous_button.config(fg='red')
+         while True:
+          previous_button.after(3000, lambda: color_red(previous_button,previous_word, button_connect_english))
+          if fg(previous_button) == 'orange':
+             unknown_button_f.after(3000, lambda:color_red(unknown_button_f,unknown_word_f, button_connect_spanish))
+             print('xddddd')
+             break
          # unknown_button_f.config(fg='orange')
          # previous_button.config(fg='orange')
          #  previous_button.config(fg='red')
