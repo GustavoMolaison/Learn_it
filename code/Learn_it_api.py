@@ -31,7 +31,7 @@ def clear():
 def spanish_button_func():
     def color_red(whatever_button, whatever_word, func):
 
-        whatever_button.after(6000, whatever_button.config(fg='orange',command=lambda: func(whatever_button, whatever_word)))
+        whatever_button.after(3000, lambda: whatever_button.config(fg='orange',command=lambda: func(whatever_button, whatever_word)))
     def uncorrect():
 
          global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, unknown_button_f,no_yellow, unknown_word_f, stay_green_eng, previous_word
@@ -41,12 +41,13 @@ def spanish_button_func():
          previous_button.config(fg='red', command = nothing)
          if unknown_button_f in spanish_list:
              print('spanish')
-             unknown_button_f.after(3000, lambda: color_red(unknown_button_f, unknown_word_f, button_connect_spanish))
-             # previous_button.after(3000, lambda: color_red(previous_button, previous_word, button_connect_english))
+             color_red(unknown_button_f, unknown_word_f, button_connect_spanish)
+             color_red(previous_button, previous_word, button_connect_english)
          else:
              print('vanish')
              print(f'unknown_button_f { unknown_button_f} and previous_button { previous_button}.')
              color_red(unknown_button_f, unknown_word_f, button_connect_english)
+             color_red(previous_button, previous_word, button_connect_spanish)
 
 
 
