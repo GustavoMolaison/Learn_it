@@ -29,22 +29,29 @@ def clear():
 
 
 def spanish_button_func():
-    def color_red(whatever, whatever2, fun):
-        previous_button.config(fg='orange', command=lambda: fun(whatever, whatever2))
-
+    def color_red(whatever_button, whatever_word, func):
+        # whatever_button.config(fg='orange', command= lambda: after(3000, lambda: fucc(whatever_button, whatever_word)))
+        whatever_button.after(6000, whatever_button.config(fg='orange',command=lambda: func(whatever_button, whatever_word)))
     def uncorrect():
 
          global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, unknown_button_f,no_yellow, unknown_word_f, stay_green_eng, previous_word
          print('xd')
          no_yellow = True
-         unknown_button_f.config(fg='red')
-         previous_button.config(fg='red')
-         while True:
-          previous_button.after(3000, lambda: color_red(previous_button,previous_word, button_connect_english))
-          if fg(previous_button) == 'orange':
-             unknown_button_f.after(3000, lambda:color_red(unknown_button_f,unknown_word_f, button_connect_spanish))
-             print('xddddd')
-             break
+         unknown_button_f.config(fg='red', command = nothing)
+         previous_button.config(fg='red', command = nothing)
+         if unknown_button_f in spanish_list:
+             print('spanish')
+             unknown_button_f.after(3000, lambda: color_red(unknown_button_f, unknown_word_f, button_connect_spanish))
+             # previous_button.after(3000, lambda: color_red(previous_button, previous_word, button_connect_english))
+         else:
+             print('vanish')
+             print(f'unknown_button_f { unknown_button_f} and previous_button { previous_button}.')
+             color_red(unknown_button_f, unknown_word_f, button_connect_english)
+             # unknown_button_f.after(6000, unknown_button_f.config(fg='orange', command=lambda: button_connect_english(unknown_button_f, unknown_word_f)))
+             # unknown_button_f.after(3000, lambda: color_red(unknown_button_f, unknown_word_f, whatever_word))
+             # previous_button.after(3000, lambda: color_red(previous_button, previous_word, button_connect_english))
+
+
          # unknown_button_f.config(fg='orange')
          # previous_button.config(fg='orange')
          #  previous_button.config(fg='red')
@@ -286,6 +293,9 @@ def spanish_button_func():
     english_word3.place(y=650, x=750)
     english_word4 = Button(text='wall', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_english(english_word4, 'wall'))
     english_word4.place(y=800, x=750)
+
+    spanish_list=[spanish_word0, spanish_word1, spanish_word2, spanish_word3, spanish_word4]
+    english_list =[english_word0, english_word1, english_word2, english_word3, english_word4]
     def con():
             print('esp ' + str(clicked_buttons_count_esp) + ' eng' + str(clicked_buttons_count_eng) + ' stay green:' + str(stay_green_eng))
     button_conections_dict = {'.!button2':'.!button7','.!button7':'.!button2','.!button3':'.!button8','.!button8':'.!button3','.!button4':'.!button9','.!button9':'.!button4','.!button5':'.!button10','.!button10':'.!button5','.!button6':'.!button11', '.!button11':'.!button6'}
