@@ -17,14 +17,15 @@ stay_green_esp=[]
 def nothing():
     pass
 def clear():
-    global previous_eng_word, previous_button_eng, previous_button, previous_button_esp, previous_esp_word
+    global previous_eng_word, previous_button_eng, previous_button, previous_button_esp, previous_esp_word, button_check_spanish, button_check_english
     previous_eng_word = None
     previous_button_eng = None
     previous_button= None
     previous_word = None
     previous_button_esp = None
     previous_esp_word = None
-
+    button_check_spanish = None
+    button_check_english = None
 
 
 
@@ -43,15 +44,13 @@ def spanish_button_func():
              print('spanish')
              color_red(unknown_button_f, unknown_word_f, button_connect_spanish)
              color_red(previous_button, previous_word, button_connect_english)
-             button_check_english = None
-             button_check_spanish = None
+
          else:
              print('vanish')
              print(f'unknown_button_f { unknown_button_f} and previous_button { previous_button}.')
              color_red(unknown_button_f, unknown_word_f, button_connect_english)
              color_red(previous_button, previous_word, button_connect_spanish)
-             button_check_spanish = None
-             button_check_english = None
+
          if not clicked_buttons_count_eng == 0:
              clicked_buttons_count_eng = clicked_buttons_count_eng - 1
          if not clicked_buttons_count_esp == 0:
