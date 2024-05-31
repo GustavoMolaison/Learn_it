@@ -1,8 +1,8 @@
 from tkinter import *
 import pickle
-import asyncio
-import tracemalloc
-tracemalloc.start()
+# import asyncio
+# import tracemalloc
+# tracemalloc.start()
 
 import time
 global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, previous_eng_word, previous_esp_word, stay_green_esp, stay_green_eng
@@ -260,8 +260,13 @@ def spanish_button_func():
 
     Learn_it_label.destroy()
     spanish_button.destroy()
-    spanish_word0 = Button(text='casa', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word0, 'casa'))
-    spanish_word0.place(y=200, x=150)
+    spanish_word0_img = PhotoImage(file =r"C:\Users\user\OneDrive\Pulpit\python obrazki\buton.png")
+    imadze = Label(image=spanish_word0_img)
+    imadze.pack()
+    spanish_word0 = Button(Ltm_screen, image = spanish_word0_img, command=lambda: button_connect_spanish(spanish_word0, 'casa'))
+    # spanish_word0 = Button(text='casa', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word0, 'casa'))
+    spanish_word0.place(y=100, x=150)
+    # spanish_word0.place(y=200, x=150)
     spanish_word1 = Button(text='para', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word1, 'para'))
     spanish_word1.place(y=350, x=150)
     spanish_word2 = Button(text='mismo', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word2, 'mismo'))
@@ -298,7 +303,7 @@ def spanish_button_func():
 
 
 def Learn_it_main():
-    global Learn_it_label, spanish_button, basic_f
+    global Learn_it_label, spanish_button, basic_f, Ltm_screen
     Ltm_screen = Tk()
     # Ltm_screen.configure(bg='black')
     # Ltm_screen.attributes('-fullscreen',True)
