@@ -207,6 +207,8 @@ def spanish_button_func():
             unknown_button2.configure(bg='black', fg='orange', command=lambda:button_connect_english(unknown_button2, unknown_word))
         if no_yellow == False:
          unknown_button.configure(bg='black', fg='yellow', command=lambda:button_connect22(unknown_button))
+
+
     def button_connect_spanish(unknown_button, unknown_word):
         global clicked_buttons_count_esp, clicked_buttons_count_esp, previous_esp_word, previous_button_esp, stay_green_esp, previous_button, button_check_spanish, previous_word, clicked_buttons_count_eng, unknown_button_f, no_yellow, unknown_word_f
         correct_value = 0
@@ -253,17 +255,24 @@ def spanish_button_func():
 
             unknown_button2.configure(bg='black', fg='orange', command=lambda:button_connect_spanish(unknown_button2, unknown_word))
         if no_yellow == False:
-         unknown_button.configure(bg='black', fg='yellow', command=lambda:button_connect2(unknown_button))
-
+         if unknown_button == spanish_word0:
+          spanish_word0_yellow = Image.open(r'C:/Users/user/OneDrive/Pulpit/python obrazki/casa22 yellow.png')
+          spanish_word0_yellow_r = ImageTk.PhotoImage( spanish_word0_yellow)
+          unknown_button.configure(image = spanish_word0_yellow_r, command=lambda:button_connect2(unknown_button))
+          unknown_button.photo = spanish_word0_yellow_r
+         else: 
+          unknown_button.configure(fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
     Learn_it_label.destroy()
     spanish_button.destroy()
-    spanish_word0_img_f = Image.open(r"C:/Users/user/OneDrive/Pulpit/python obrazki/casa.png")
+    Ltm_screen.columnconfigure((1,2,3,4,5,6), weight = 2, uniform = 'a')
+    Ltm_screen.rowconfigure((0,1,2,3,4,5,6), weight = 1, uniform = 'a')
+    spanish_word0_img_f = Image.open(r"C:/Users/user/OneDrive/Pulpit/python obrazki/casa22.png")
     spanish_word0_img_r = ImageTk.PhotoImage(spanish_word0_img_f)
-    spanish_word0 = Button(Ltm_screen, image = spanish_word0_img_r, command=lambda: button_connect_spanish(spanish_word0, 'casa'))
+    spanish_word0 = Button(image = spanish_word0_img_r, command=lambda: button_connect_spanish(spanish_word0, 'casa'))
+    spanish_word0.photo = spanish_word0_img_r
     # spanish_word0 = Button(text='casa', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word0, 'casa'))
-    spanish_word0.place(y=100, x=150)
-    # spanish_word0.place(y=200, x=150)
+    spanish_word0.place(y=200, x=150)
     spanish_word1 = Button(text='para', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word1, 'para'))
     spanish_word1.place(y=350, x=150)
     spanish_word2 = Button(text='mismo', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word2, 'mismo'))
