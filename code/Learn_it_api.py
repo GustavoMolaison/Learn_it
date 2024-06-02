@@ -175,7 +175,9 @@ def spanish_button_func():
              one_orange_english(str(previous_eng_word))
             if clicked_buttons_count_esp == 1:
              try:
+              print('yea2')
               if button_conections_dict[button_check_english] == button_check_spanish or button_conections_dict[button_check_spanish] == button_check_english:
+               print('yea')
                correct('house', 0, 'eng')
                correct('for', 1, 'eng')
                correct('same', 2,'eng')
@@ -255,60 +257,71 @@ def spanish_button_func():
 
             unknown_button2.configure(bg='black', fg='orange', command=lambda:button_connect_spanish(unknown_button2, unknown_word))
         if no_yellow == False:
-         if unknown_button == spanish_word0:
-          spanish_word0_yellow = Image.open(r'C:/Users/user/OneDrive/Pulpit/python obrazki/casa22 yellow.png')
-          spanish_word0_yellow_r = ImageTk.PhotoImage( spanish_word0_yellow)
-          unknown_button.configure(image = spanish_word0_yellow_r, command=lambda:button_connect2(unknown_button))
-          unknown_button.photo = spanish_word0_yellow_r
-         else: 
-          unknown_button.configure(fg = 'yellow', command=lambda:button_connect2(unknown_button))  
+        #  if unknown_button == spanish_word0:
+        #   spanish_word0_yellow = Image.open(r'C:/Users/user/OneDrive/Pulpit/python obrazki/casa22 yellow.png')
+        #   spanish_word0_yellow_r = ImageTk.PhotoImage( spanish_word0_yellow)
+        #   unknown_button.configure(image = spanish_word0_yellow_r, command=lambda:button_connect2(unknown_button))
+        #   unknown_button.photo = spanish_word0_yellow_r
+        #  else: 
+           unknown_button.configure( fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
+
+#  placing buttons
     Learn_it_label.destroy()
     spanish_button.destroy()
-    Ltm_screen.columnconfigure((1,2,3,4,5,6), weight = 2, uniform = 'a')
-    Ltm_screen.rowconfigure((0,1,2,3,4,5,6), weight = 1, uniform = 'a')
-    spanish_word0_img_f = Image.open(r"C:/Users/user/OneDrive/Pulpit/python obrazki/casa22.png")
-    spanish_word0_img_r = ImageTk.PhotoImage(spanish_word0_img_f)
-    spanish_word0 = Button(image = spanish_word0_img_r, command=lambda: button_connect_spanish(spanish_word0, 'casa'))
-    spanish_word0.photo = spanish_word0_img_r
-    # spanish_word0 = Button(text='casa', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word0, 'casa'))
-    spanish_word0.place(y=200, x=150)
-    spanish_word1 = Button(text='para', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word1, 'para'))
-    spanish_word1.place(y=350, x=150)
-    spanish_word2 = Button(text='mismo', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word2, 'mismo'))
-    spanish_word2.place(y=500, x=150)
-    spanish_word3 = Button(text='acostar', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word3, 'acostar'))
-    spanish_word3.place(y=650, x=150)
-    spanish_word4 = Button(text='pared', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word4, 'pared'))
-    spanish_word4.place(y=800, x=150)
-
-    english_word0 = Button(text='house', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word0, 'house'))
-    english_word0.place(y=200, x=750)
-    english_word1 = Button(text='for', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word1, 'for'))
-    english_word1.place(y=350, x=750)
-    english_word2 = Button(text='same', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word2, 'same'))
-    english_word2.place(y=500, x=750)
-    english_word3 = Button(text='go to bed', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word3, 'go to bed'))
-    english_word3.place(y=650, x=750)
-    english_word4 = Button(text='wall', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_english(english_word4, 'wall'))
-    english_word4.place(y=800, x=750)
+    # Ltm_screen.columnconfigure((1,2,3,4,5,6), weight = 2, uniform = 'a')
+    # Ltm_screen.rowconfigure((0,1,2,3,4,5,6), weight = 1, uniform = 'a')
+    # spanish_word0_img_f = Image.open(r"C:/Users/user/OneDrive/Pulpit/python obrazki/casa22.png")
+    # spanish_word0_img_r = ImageTk.PhotoImage(spanish_word0_img_f)
+    # spanish_word0 = Button(image = spanish_word0_img_r, command=lambda: button_connect_spanish(spanish_word0, 'casa'))
+    # spanish_word0.photo = spanish_word0_img_r
+    words_frame = Frame(Ltm_screen, bg = 'black')
+    for i in range(5):
+     words_frame.columnconfigure( i, weight =1, uniform = 'a')
+    for i in range(5): 
+     words_frame.rowconfigure(i, weight = 1, uniform = 'a')
+    spanish_word0 = Button(words_frame, text='casa', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word0, 'casa'))
+    spanish_word0.grid(column=1, row=0, padx = 30, pady= 30)
+    spanish_word1 = Button(words_frame, text='para', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word1, 'para'))
+    spanish_word1.grid(column=1, row=1, padx = 30, pady= 30)
+    spanish_word2 = Button(words_frame, text='mismo', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word2, 'mismo'))
+    spanish_word2.grid(column=1, row=2, padx = 30, pady= 30)
+    spanish_word3 = Button(words_frame, text='acostar', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word3, 'acostar'))
+    spanish_word3.grid(column=1, row=3, padx = 30, pady= 30)
+    spanish_word4 = Button(words_frame, text='pared', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word4, 'pared'))
+    spanish_word4.grid(column=1, row=4, padx = 30, pady= 30)
+    
+    english_word0 = Button(words_frame, text='house', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word0, 'house'))
+    english_word0.grid(column=3, row=0)
+    english_word1 = Button(words_frame, text='for', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word1, 'for'))
+    english_word1.grid(column=3, row=1)
+    english_word2 = Button(words_frame, text='same', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word2, 'same'))
+    english_word2.grid(column=3, row=2)
+    english_word3 = Button(words_frame, text='go to bed', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word3, 'go to bed'))
+    english_word3.grid(column=3, row=3)
+    english_word4 = Button(words_frame, text='wall', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_english(english_word4, 'wall'))
+    english_word4.grid(column=3, row=4)
+    
 
     spanish_list=[spanish_word0, spanish_word1, spanish_word2, spanish_word3, spanish_word4]
     english_list =[english_word0, english_word1, english_word2, english_word3, english_word4]
     def con():
             print('esp ' + str(clicked_buttons_count_esp) + ' eng' + str(clicked_buttons_count_eng) + ' stay green:' + str(stay_green_eng) + ' englishcheck ' + str(button_check_english) + ' spanishckeck ' + str(button_check_spanish))
-    button_conections_dict = {'.!button2':'.!button7','.!button7':'.!button2','.!button3':'.!button8','.!button8':'.!button3','.!button4':'.!button9','.!button9':'.!button4','.!button5':'.!button10','.!button10':'.!button5','.!button6':'.!button11', '.!button11':'.!button6'}
-    continue_button = Button(text='continue', bg='black', fg='yellow', font=basic_f, command = con)
-    continue_button.place(y=800, x=1500)
+    button_conections_dict = {'.!frame.!button':'.!frame.!button6','.!frame.!button6':'.!frame.!button','.!frame.!button2':'.!frame.!button7','.!frame.!button7':'.!frame.!button2','.!frame.!button3':'.!frame.!button8','.!frame.!button8':'.!frame.!button3','.!frame.!button4':'.!frame.!button9','.!frame.!button9':'.!frame.!button4','.!frame.!button5':'.!frame.!button10', '.!frame.!button10':'.!frame.!button5'}
+    continue_button = Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_f, command = lambda: con())
+    continue_button.grid(column=4, row=4, padx = 30, pady= 30)
+    words_frame.pack()
 
 
 
 
-
-
-
+# frist page
 
 def Learn_it_main():
+    global Learn_it_label, spanish_button, basic_f, Ltm_screen
+    # if back_or_not == 1:
+    #     Ltm_screen.clear 
+
     global Learn_it_label, spanish_button, basic_f, Ltm_screen
     Ltm_screen = Tk()
     # Ltm_screen.configure(bg='black')
