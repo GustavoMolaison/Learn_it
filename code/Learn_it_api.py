@@ -29,8 +29,8 @@ def clear():
 
 def spanish_button_func():
     def color_red(whatever_button, whatever_word, func):
-
         whatever_button.after(1000, lambda: whatever_button.config(fg='orange',command=lambda: func(whatever_button, whatever_word)))
+        
     def uncorrect():
 
          global clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, unknown_button_f,no_yellow, unknown_word_f, stay_green_eng, previous_word, button_check_spanish, button_check_english
@@ -93,6 +93,7 @@ def spanish_button_func():
     def one_orange_english(f_previous_eng_word):
         global stay_green_eng, clicked_buttons_count_eng
         if f_previous_eng_word == 'house':
+            print('one_orange_english(line96)')
             if not 'stay green0' in stay_green_eng:
                 english_word0.configure(fg='orange', command=lambda: button_connect_english(english_word0, 'house'))
                 if not clicked_buttons_count_eng == 0:
@@ -156,13 +157,13 @@ def spanish_button_func():
 
 
 
-
+# ENGLISH BUTTONS
 
     def button_connect_english(unknown_button, unknown_word):
         global clicked_buttons_count_eng, previous_eng_word, previous_button_eng, stay_green_eng, previous_button, button_check_english, previous_esp_word, unknown_word_f, clicked_buttons_count_esp, previous_word, no_yellow, unknown_button_f
         correct_value = 0
         no_yellow = False
-        button_check_english = str(unknown_button)
+        button_check_english = str(unknown_word)
         unknown_button_f = unknown_button
         unknown_word_f = unknown_word
         clicked_buttons_count_eng = clicked_buttons_count_eng + 1
@@ -170,14 +171,15 @@ def spanish_button_func():
 
 
         if clicked_buttons_count > 1:
-            print('ąąaa')
+            print('clicked_buttons_count(line:173)')
             if clicked_buttons_count_eng > 1:
+             print('one orange english(line:175)')
              one_orange_english(str(previous_eng_word))
             if clicked_buttons_count_esp == 1:
              try:
-              print('yea2')
+              print('clicked_buttons_count(line:180)')
               if button_conections_dict[button_check_english] == button_check_spanish or button_conections_dict[button_check_spanish] == button_check_english:
-               print('yea')
+               print('clicked_buttons_count(line:182)')
                correct('house', 0, 'eng')
                correct('for', 1, 'eng')
                correct('same', 2,'eng')
@@ -211,13 +213,16 @@ def spanish_button_func():
          unknown_button.configure(bg='black', fg='yellow', command=lambda:button_connect22(unknown_button))
 
 
+
+# SPANISH BUTTTONS
+
     def button_connect_spanish(unknown_button, unknown_word):
         global clicked_buttons_count_esp, clicked_buttons_count_esp, previous_esp_word, previous_button_esp, stay_green_esp, previous_button, button_check_spanish, previous_word, clicked_buttons_count_eng, unknown_button_f, no_yellow, unknown_word_f
         correct_value = 0
         no_yellow = False
         unknown_button_f = unknown_button
         unknown_word_f = unknown_word
-        button_check_spanish = str(unknown_button)
+        button_check_spanish = str(unknown_word)
         clicked_buttons_count_esp = clicked_buttons_count_esp + 1
         clicked_buttons_count = clicked_buttons_count_eng + clicked_buttons_count_esp
 
@@ -302,13 +307,20 @@ def spanish_button_func():
     english_word4 = Button(words_frame, text='wall', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_english(english_word4, 'wall'))
     english_word4.grid(column=3, row=4)
     
+    but_pait_esp0 = spanish_word0
+
+    but_pait_eng0 = english_word0
 
     spanish_list=[spanish_word0, spanish_word1, spanish_word2, spanish_word3, spanish_word4]
     english_list =[english_word0, english_word1, english_word2, english_word3, english_word4]
     def con():
             print('esp ' + str(clicked_buttons_count_esp) + ' eng' + str(clicked_buttons_count_eng) + ' stay green:' + str(stay_green_eng) + ' englishcheck ' + str(button_check_english) + ' spanishckeck ' + str(button_check_spanish))
-    button_conections_dict = {'.!frame.!button':'.!frame.!button6','.!frame.!button6':'.!frame.!button','.!frame.!button2':'.!frame.!button7','.!frame.!button7':'.!frame.!button2','.!frame.!button3':'.!frame.!button8','.!frame.!button8':'.!frame.!button3','.!frame.!button4':'.!frame.!button9','.!frame.!button9':'.!frame.!button4','.!frame.!button5':'.!frame.!button10', '.!frame.!button10':'.!frame.!button5'}
-    continue_button = Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_f, command = lambda: con())
+    button_conections_dict = {'casa':'house','house':'casa', 'para':'for','for':'para','mismo': 'same', 'same': 'mismo', 'acostar':'go to bed', 'go to bed':'acostar','pared':'wall', 'wall':'pared'}
+    #  button_conections_dict = {'.!frame.!button':'.!frame.!button6','.!frame.!button6':'.!frame.!button', '.!frame.!button2':'.!frame.!button7','.!frame.!button7':'.!frame.!button2','.!frame.!button3':'.!frame.!button8','.!frame.!button8':'.!frame.!button3','.!frame.!button4':'.!frame.!button9','.!frame.!button9':'.!frame.!button4','.!frame.!button5':'.!frame.!button10', '.!frame.!button10':'.!frame.!button5'}
+    def con_but_fun():
+       words_frame.destroy()
+       Learn_it_main(1)
+    continue_button = Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_f, command = lambda: con_but_fun())
     continue_button.grid(column=4, row=4, padx = 30, pady= 30)
     words_frame.pack()
 
@@ -317,21 +329,27 @@ def spanish_button_func():
 
 # frist page
 
-def Learn_it_main():
-    global Learn_it_label, spanish_button, basic_f, Ltm_screen
+def Learn_it_main( back_or_not = 0): 
+    global Learn_it_label, spanish_button, basic_f, Ltm_screen 
     # if back_or_not == 1:
-    #     Ltm_screen.clear 
+    #     words_frame.destroy() 
 
     global Learn_it_label, spanish_button, basic_f, Ltm_screen
-    Ltm_screen = Tk()
+    if back_or_not == 0:
+       Ltm_screen = Tk()
+       Ltm_screen.title('LearnIt!')
+       Ltm_screen.geometry('1920x1080')
+       Ltm_screen.configure(bg='black')
+       
     # Ltm_screen.configure(bg='black')
     # Ltm_screen.attributes('-fullscreen',True)
-    Ltm_screen.title('LearnIt!')
-    Ltm_screen.geometry('1920x1080')
-    Ltm_screen.configure(bg='black')
+    # Ltm_screen.title('LearnIt!')
+    # Ltm_screen.geometry('1920x1080')
+    # Ltm_screen.configure(bg='black')
+    # lil_f = ('Kozuka Mincho Pro M', 50, 'bold')
+    # basic_f = ('Lionel Classic', 50)
     lil_f = ('Kozuka Mincho Pro M', 50, 'bold')
     basic_f = ('Lionel Classic', 50)
-
     Learn_it_label = Label(text='LearnIt!', bg='black', fg='yellow', height=2, width=10)
     Learn_it_label.configure(font=lil_f)
     Learn_it_label.place(y=0, x=725)
