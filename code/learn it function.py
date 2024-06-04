@@ -27,7 +27,10 @@ def clear():
 
 
 # CONNECTING
-def spanish_button_func():
+def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_world, english_word1_world, spanish_word2_world, english_word2_world, spanish_word3_world, english_word3_world, spanish_word4_world, english_word4_world):
+
+
+
     def color_red(whatever_button, whatever_word, func):
         whatever_button.after(1000, lambda: whatever_button.config(fg='orange',command=lambda: func(whatever_button, whatever_word)))
     # CONNECTING
@@ -95,61 +98,61 @@ def spanish_button_func():
     # COLORING        
     def one_orange_english(f_previous_eng_word):
         global stay_green_eng, clicked_buttons_count_eng
-        if f_previous_eng_word == 'house':
+        if f_previous_eng_word == english_word0_world:
             print('one_orange_english(line96)')
             if not 'stay green0' in stay_green_eng:
-                english_word0.configure(fg='orange', command=lambda: button_connect_english(english_word0, 'house'))
+                english_word0.configure(fg='orange', command=lambda: button_connect_english(english_word0, english_word0_world))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-        if f_previous_eng_word == 'for':
+        if f_previous_eng_word == english_word1_world:
             print('line(105)')
             if not 'stay green1' in stay_green_eng:
                 print('line(107)')
-                english_word1.configure(fg='orange', command=lambda: button_connect_english(english_word1, 'for'))
+                english_word1.configure(fg='orange', command=lambda: button_connect_english(english_word1, english_word1_world))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-        if f_previous_eng_word == 'same':
+        if f_previous_eng_word == english_word2_world:
             if not 'stay green2' in stay_green_eng:
-                english_word2.configure(fg='orange', command=lambda: button_connect_english(english_word2, 'same'))
+                english_word2.configure(fg='orange', command=lambda: button_connect_english(english_word2, english_word2_world))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-        if f_previous_eng_word == 'go to bed':
+        if f_previous_eng_word == english_word3_world:
             if not 'stay green3' in stay_green_eng:
-                english_word3.configure(fg='orange', command=lambda: button_connect_english(english_word3, 'go to bed'))
+                english_word3.configure(fg='orange', command=lambda: button_connect_english(english_word3, english_word3_world))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
-        if f_previous_eng_word == 'wall':
+        if f_previous_eng_word == english_word4_world:
             if not 'stay green4' in stay_green_eng:
-                english_word4.configure(fg='orange', command=lambda: button_connect_english(english_word4, 'wall'))
+                english_word4.configure(fg='orange', command=lambda: button_connect_english(english_word4, english_word4_world))
                 if not clicked_buttons_count_eng == 0:
                     clicked_buttons_count_eng = clicked_buttons_count_eng - 1
 
    # COLORING
     def one_orange_esp(f_previous_esp_word):
         global stay_green_esp, clicked_buttons_count_esp
-        if f_previous_esp_word == 'casa':
+        if f_previous_esp_word == spanish_word0_world:
             if not 'stay green0' in stay_green_esp:
-                spanish_word0.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word0, 'casa'))
+                spanish_word0.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word0, spanish_word0_world))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-        if f_previous_esp_word == 'para':
+        if f_previous_esp_word == spanish_word1_world:
             if not 'stay green1' in stay_green_esp:
-                spanish_word1.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word1, 'para'))
+                spanish_word1.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word1, spanish_word1_world))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-        if f_previous_esp_word == 'mismo':
+        if f_previous_esp_word == spanish_word2_world:
             if not 'stay green2' in stay_green_esp:
-                spanish_word2.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word2, 'mismo'))
+                spanish_word2.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word2, spanish_word2_world))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-        if f_previous_esp_word == 'acostar':
+        if f_previous_esp_word == spanish_word3_world:
             if not 'stay green3' in stay_green_esp:
-                spanish_word3.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word3, 'acostar'))
+                spanish_word3.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word3, spanish_word3_world))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
-        if f_previous_esp_word == 'pared':
+        if f_previous_esp_word == spanish_word4_world:
             if not 'stay green4' in stay_green_esp:
-                spanish_word4.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word4, 'pared'))
+                spanish_word4.configure(fg='orange', command=lambda: button_connect_spanish(spanish_word4, spanish_word4_world))
                 if not clicked_buttons_count_esp == 0:
                     clicked_buttons_count_esp = clicked_buttons_count_esp - 1
 
@@ -187,11 +190,11 @@ def spanish_button_func():
               print('clicked_buttons_count(line:185)')
               if button_conections_dict[button_check_english] == button_check_spanish or button_conections_dict[button_check_spanish] == button_check_english:
                print('clicked_buttons_count(line:187)')
-               correct('house', 0, 'eng')
-               correct('for', 1, 'eng')
-               correct('same', 2,'eng')
-               correct('go to bed', 3,'eng')
-               correct('wall', 4,'eng')
+               correct(english_word0_world, 0, 'eng')
+               correct(english_word1_world, 1, 'eng')
+               correct(english_word2_world, 2,'eng')
+               correct(english_word3_world, 3,'eng')
+               correct(english_word4_world, 4,'eng')
               if clicked_buttons_count_eng == 1:
                if not button_check_spanish == None:
                 if not button_conections_dict[button_check_english] == button_check_spanish or not button_conections_dict[button_check_spanish] == button_check_english:
@@ -241,11 +244,11 @@ def spanish_button_func():
             if clicked_buttons_count_esp == 1:
              try:
               if button_conections_dict[button_check_english] == button_check_spanish or button_conections_dict[button_check_spanish] == button_check_english:
-                 correct('casa', 0, 'esp')
-                 correct('para', 1, 'esp')
-                 correct('mismo', 2, 'esp')
-                 correct('acostar', 3, 'esp')
-                 correct('pared', 4, 'esp')
+                 correct(spanish_word0_world, 0, 'esp')
+                 correct(spanish_word1_world, 1, 'esp')
+                 correct(spanish_word2_world, 2, 'esp')
+                 correct(spanish_word3_world, 3, 'esp')
+                 correct(spanish_word4_world, 4, 'esp')
               if clicked_buttons_count_esp == 1:
                   if not button_check_english == None:
                       if not button_conections_dict[button_check_english] == button_check_spanish or not button_conections_dict[button_check_spanish] == button_check_english:
@@ -276,17 +279,18 @@ def spanish_button_func():
         #   unknown_button.configure(image = spanish_word0_yellow_r, command=lambda:button_connect2(unknown_button))
         #   unknown_button.photo = spanish_word0_yellow_r
         #  else: 
+
            unknown_button.configure( fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
 
-#  placing buttons
+
     Learn_it_label.destroy()
     spanish_button.destroy()
     # Ltm_screen.columnconfigure((1,2,3,4,5,6), weight = 2, uniform = 'a')
     # Ltm_screen.rowconfigure((0,1,2,3,4,5,6), weight = 1, uniform = 'a')
     # spanish_word0_img_f = Image.open(r"C:/Users/user/OneDrive/Pulpit/python obrazki/casa22.png")
     # spanish_word0_img_r = ImageTk.PhotoImage(spanish_word0_img_f)
-    # spanish_word0 = Button(image = spanish_word0_img_r, command=lambda: button_connect_spanish(spanish_word0, 'casa'))
+    # spanish_word0 = Button(image = spanish_word0_img_r, command=lambda: button_connect_spanish(spanish_word0, spanish_word0_world))
     # spanish_word0.photo = spanish_word0_img_r
     words_frame = Frame(Ltm_screen, bg = 'black')
     for i in range(5):
@@ -294,26 +298,26 @@ def spanish_button_func():
     for i in range(5): 
      words_frame.rowconfigure(i, weight = 1, uniform = 'a')
     print(str(words_frame)) 
-    spanish_word0 = Button(words_frame, text='casa', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word0, 'casa'))
+    spanish_word0 = Button(words_frame, text=spanish_word0_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word0, spanish_word0_world))
     spanish_word0.grid(column=1, row=0, padx = 30, pady= 30)
-    spanish_word1 = Button(words_frame, text='para', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word1, 'para'))
+    spanish_word1 = Button(words_frame, text=spanish_word1_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word1, spanish_word1_world))
     spanish_word1.grid(column=1, row=1, padx = 30, pady= 30)
-    spanish_word2 = Button(words_frame, text='mismo', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word2, 'mismo'))
+    spanish_word2 = Button(words_frame, text=spanish_word2_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word2, spanish_word2_world))
     spanish_word2.grid(column=1, row=2, padx = 30, pady= 30)
-    spanish_word3 = Button(words_frame, text='acostar', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word3, 'acostar'))
+    spanish_word3 = Button(words_frame, text=spanish_word3_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word3, spanish_word3_world))
     spanish_word3.grid(column=1, row=3, padx = 30, pady= 30)
-    spanish_word4 = Button(words_frame, text='pared', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word4, 'pared'))
+    spanish_word4 = Button(words_frame, text=spanish_word4_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word4, spanish_word4_world))
     spanish_word4.grid(column=1, row=4, padx = 30, pady= 30)
     
-    english_word0 = Button(words_frame, text='house', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word0, 'house'))
+    english_word0 = Button(words_frame, text=english_word0_world, bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word0, english_word0_world))
     english_word0.grid(column=3, row=0)
-    english_word1 = Button(words_frame, text='for', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word1, 'for'))
+    english_word1 = Button(words_frame, text=english_word1_world, bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word1, english_word1_world))
     english_word1.grid(column=3, row=1)
-    english_word2 = Button(words_frame, text='same', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word2, 'same'))
+    english_word2 = Button(words_frame, text=english_word2_world, bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word2, english_word2_world))
     english_word2.grid(column=3, row=2)
-    english_word3 = Button(words_frame, text='go to bed', bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word3, 'go to bed'))
+    english_word3 = Button(words_frame, text=english_word3_world, bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word3, english_word3_world))
     english_word3.grid(column=3, row=3)
-    english_word4 = Button(words_frame, text='wall', bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_english(english_word4, 'wall'))
+    english_word4 = Button(words_frame, text=english_word4_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_english(english_word4, english_word4_world))
     english_word4.grid(column=3, row=4)
     print(str(words_frame))
     print(str(spanish_word0))
@@ -323,7 +327,7 @@ def spanish_button_func():
     english_list =[english_word0, english_word1, english_word2, english_word3, english_word4]
     def con():
             print('esp ' + str(clicked_buttons_count_esp) + ' eng' + str(clicked_buttons_count_eng) + ' stay green:' + str(stay_green_eng) + ' englishcheck ' + str(button_check_english) + ' spanishckeck ' + str(button_check_spanish))
-    button_conections_dict = {'casa':'house','house':'casa', 'para':'for','for':'para','mismo': 'same', 'same': 'mismo', 'acostar':'go to bed', 'go to bed':'acostar','pared':'wall', 'wall':'pared'}
+    button_conections_dict = {spanish_word0_world : english_word0_world, english_word0_world : spanish_word0_world, spanish_word1_world : english_word1_world, english_word1_world : spanish_word1_world, spanish_word2_world : english_word2_world, english_word2_world : spanish_word2_world, spanish_word3_world : english_word3_world, english_word3_world : spanish_word3_world, spanish_word4_world : english_word4_world, english_word4_world : spanish_word4_world}
     #  button_conections_dict = {'.!frame.!button':'.!frame.!button6','.!frame.!button6':'.!frame.!button', '.!frame.!button2':'.!frame.!button7','.!frame.!button7':'.!frame.!button2','.!frame.!button3':'.!frame.!button8','.!frame.!button8':'.!frame.!button3','.!frame.!button4':'.!frame.!button9','.!frame.!button9':'.!frame.!button4','.!frame.!button5':'.!frame.!button10', '.!frame.!button10':'.!frame.!button5'}
     def con_but_fun():
        global clicked_buttons_count_eng, clicked_buttons_count_esp, clicked_buttons_count
@@ -368,7 +372,7 @@ def Learn_it_main( back_or_not = 0):
     Learn_it_label = Label(text='LearnIt!', bg='black', fg='yellow', height=2, width=10)
     Learn_it_label.configure(font=lil_f)
     Learn_it_label.place(y=0, x=725)
-    spanish_button = Button(text='Spanish!', bg='black', fg='orange', height=1, width=len('Spanish!'), command=spanish_button_func)
+    spanish_button = Button(text='Spanish!', bg='black', fg='orange', height=1, width=len('Spanish!'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
     spanish_button.configure(font=basic_f)
     spanish_button.place(y=160, x=1600)
 
