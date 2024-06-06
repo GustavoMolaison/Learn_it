@@ -1,8 +1,8 @@
 from tkinter import *
 import random
 # from PIL import ImageTk, Image 
-
 import time
+
 global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, previous_eng_word, previous_esp_word, stay_green_esp, stay_green_eng
 clicked_buttons_count_eng: int = 0
 clicked_buttons_count_esp: int = 0
@@ -27,8 +27,10 @@ def clear():
 
 
 # BUTTONS CODE
+    
 def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_world, english_word1_world, spanish_word2_world, english_word2_world, spanish_word3_world, english_word3_world, spanish_word4_world, english_word4_world):
-
+  if __name__ == "__main__": 
+       
 
     
     
@@ -364,33 +366,34 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
     continue_button = Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_f, command = lambda: con_but_fun())
     continue_button.grid(column=4, row=4, padx = 30, pady= 30)
     words_frame.pack()
-    ###################################################################################################################################################################################################
+ 
+###################################################################################################################################################################################################
 
-
+    
 
 # frist page
 
-def Learn_it_main( back_or_not = 0): 
-    global Learn_it_label, spanish_button, basic_f, Ltm_screen 
+# def Learn_it_main( back_or_not = 0): 
+#     global Learn_it_label, spanish_button, basic_f, Ltm_screen 
      
 
-    global Learn_it_label, spanish_button, basic_f, Ltm_screen
-    if back_or_not == 0:
-       Ltm_screen = Tk()
-       Ltm_screen.title('LearnIt!')
-       Ltm_screen.geometry('1920x1080')
-       Ltm_screen.configure(bg='black')
+#     global Learn_it_label, spanish_button, basic_f, Ltm_screen
+#     if back_or_not == 0:
+#        Ltm_screen = Tk()
+#        Ltm_screen.title('LearnIt!')
+#        Ltm_screen.geometry('1920x1080')
+#        Ltm_screen.configure(bg='black')
        
-    lil_f = ('Kozuka Mincho Pro M', 50, 'bold')
-    basic_f = ('Lionel Classic', 50)
-    Learn_it_label = Label(text='LearnIt!', bg='black', fg='yellow', height=2, width=10)
-    Learn_it_label.configure(font=lil_f)
-    Learn_it_label.place(y=0, x=725)
-    spanish_button = Button(text='Spanish!', bg='black', fg='orange', height=1, width=len('Spanish!'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
-    spanish_button.configure(font=basic_f)
-    spanish_button.place(y=160, x=1600)
+#     lil_f = ('Kozuka Mincho Pro M', 50, 'bold')
+#     basic_f = ('Lionel Classic', 50)
+#     Learn_it_label = Label(text='LearnIt!', bg='black', fg='yellow', height=2, width=10)
+#     Learn_it_label.configure(font=lil_f)
+#     Learn_it_label.place(y=0, x=725)
+#     spanish_button = Button(text='Spanish!', bg='black', fg='orange', height=1, width=len('Spanish!'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
+#     spanish_button.configure(font=basic_f)
+#     spanish_button.place(y=160, x=1600)
 
 
-    Ltm_screen.mainloop()
+#     Ltm_screen.mainloop()
 
-Learn_it_main()
+# Learn_it_main()

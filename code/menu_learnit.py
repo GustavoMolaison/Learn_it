@@ -23,9 +23,9 @@ def Learn_it_main(back_or_not = 0):
     Learn_it_label = Label(text='LearnIt!', bg='black', fg='yellow', height=2, width=10)
     Learn_it_label.configure(font=lil_f)
     Learn_it_label.place(y=0, x=725)
-    spanish_button = Button(text='Spanish!', bg='black', fg='orange', height=1, width=len('Spanish!'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
+    spanish_button = Button(text='Spanish connect!', bg='black', fg='orange', height=1, width=len('Spanish connect'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
     spanish_button.configure(font=basic_f)
-    spanish_button.place(y=160, x=1600)
+    spanish_button.place(y=160, x=1400)
 
 
     Ltm_screen.mainloop()
