@@ -1,5 +1,6 @@
 from tkinter import *
 import random
+from menu_learnit import *
 # from PIL import ImageTk, Image 
 import time
 
@@ -29,7 +30,7 @@ def clear():
 # BUTTONS CODE
     
 def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_world, english_word1_world, spanish_word2_world, english_word2_world, spanish_word3_world, english_word3_world, spanish_word4_world, english_word4_world):
-  if __name__ == "__main__": 
+#   if __name__ == "__main__": 
        
 
     

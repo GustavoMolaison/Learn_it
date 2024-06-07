@@ -1,15 +1,13 @@
 from tkinter import *
-from mat_but_learnit import spanish_button_func
-
-
 
 
 
 
 
 def Learn_it_main(back_or_not = 0): 
+    from mat_but_learnit import spanish_button_func 
     global Learn_it_label, spanish_button, basic_f, Ltm_screen 
-     
+    
 
     global Learn_it_label, spanish_button, basic_f, Ltm_screen
     if back_or_not == 0:
