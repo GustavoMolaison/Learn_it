@@ -1,6 +1,6 @@
 from tkinter import *
 import random
-from menu_learnit import *
+# from menu_learnit import Learn_it_main
 # from PIL import ImageTk, Image 
 import time
 
@@ -30,7 +30,7 @@ def clear():
 # BUTTONS CODE
     
 def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_world, english_word1_world, spanish_word2_world, english_word2_world, spanish_word3_world, english_word3_world, spanish_word4_world, english_word4_world):
-#   if __name__ == "__main__": 
+  if __name__ == "mat_but_learnit": 
        
 
     
@@ -289,6 +289,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
            unknown_button.configure( fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
+    from menu_learnit import Learn_it_label, spanish_button, Ltm_screen
     Learn_it_label.destroy()
     spanish_button.destroy()
     words_frame = Frame(Ltm_screen, bg = 'black')
@@ -363,6 +364,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
        stay_green_esp.clear()
        stay_green_eng.clear()
        words_frame.destroy()
+       from menu_learnit import Learn_it_main
        Learn_it_main(1)
     continue_button = Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_f, command = lambda: con_but_fun())
     continue_button.grid(column=4, row=4, padx = 30, pady= 30)
