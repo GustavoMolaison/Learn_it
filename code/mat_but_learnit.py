@@ -289,10 +289,10 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
            unknown_button.configure( fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
-    from menu_learnit import Learn_it_label, spanish_button, Ltm_screen
-    Learn_it_label.destroy()
-    spanish_button.destroy()
-    words_frame = Frame(Ltm_screen, bg = 'black')
+    from menu_learnit import frist_screen, frist_label, frist_button 
+    frist_label.Learn_it_label.destroy()
+    frist_button.spanish_button.destroy()
+    words_frame = Frame(frist_screen.root, bg = 'black')
     for i in range(5):
      words_frame.columnconfigure( i, weight =1, uniform = 'a')
     for i in range(5): 
@@ -325,26 +325,26 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
     ###################################################################################################################################################################################################
 
     # WORD PLACEMENT ##################################################################################################################################################################################
-    spanish_word0 = Button(words_frame, text=spanish_word0_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word0, spanish_word0_world))
+    spanish_word0 = Button(words_frame, text=spanish_word0_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word0, spanish_word0_world))
     spanish_word0.grid(column=1, row=random_row_esp0, padx = 30, pady= 30)
-    spanish_word1 = Button(words_frame, text=spanish_word1_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word1, spanish_word1_world))
+    spanish_word1 = Button(words_frame, text=spanish_word1_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word1, spanish_word1_world))
     spanish_word1.grid(column=1, row=random_row_esp1, padx = 30, pady= 30)
-    spanish_word2 = Button(words_frame, text=spanish_word2_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word2, spanish_word2_world))
+    spanish_word2 = Button(words_frame, text=spanish_word2_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word2, spanish_word2_world))
     spanish_word2.grid(column=1, row=random_row_esp2, padx = 30, pady= 30)
-    spanish_word3 = Button(words_frame, text=spanish_word3_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word3, spanish_word3_world))
+    spanish_word3 = Button(words_frame, text=spanish_word3_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word3, spanish_word3_world))
     spanish_word3.grid(column=1, row=random_row_esp3, padx = 30, pady= 30)
-    spanish_word4 = Button(words_frame, text=spanish_word4_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_spanish(spanish_word4, spanish_word4_world))
+    spanish_word4 = Button(words_frame, text=spanish_word4_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word4, spanish_word4_world))
     spanish_word4.grid(column=1, row=random_row_esp4, padx = 30, pady= 30)
     
-    english_word0 = Button(words_frame, text=english_word0_world, bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word0, english_word0_world))
+    english_word0 = Button(words_frame, text=english_word0_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f,command=lambda:button_connect_english(english_word0, english_word0_world))
     english_word0.grid(column=3, row=random_row_eng0)
-    english_word1 = Button(words_frame, text=english_word1_world, bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word1, english_word1_world))
+    english_word1 = Button(words_frame, text=english_word1_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f,command=lambda:button_connect_english(english_word1, english_word1_world))
     english_word1.grid(column=3, row=random_row_eng1)
-    english_word2 = Button(words_frame, text=english_word2_world, bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word2, english_word2_world))
+    english_word2 = Button(words_frame, text=english_word2_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f,command=lambda:button_connect_english(english_word2, english_word2_world))
     english_word2.grid(column=3, row=random_row_eng2)
-    english_word3 = Button(words_frame, text=english_word3_world, bg='black', fg='orange', height=1, width=10, font=basic_f,command=lambda:button_connect_english(english_word3, english_word3_world))
+    english_word3 = Button(words_frame, text=english_word3_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f,command=lambda:button_connect_english(english_word3, english_word3_world))
     english_word3.grid(column=3, row=random_row_eng3)
-    english_word4 = Button(words_frame, text=english_word4_world, bg='black', fg='orange', height=1, width=10, font=basic_f, command=lambda:button_connect_english(english_word4, english_word4_world))
+    english_word4 = Button(words_frame, text=english_word4_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_english(english_word4, english_word4_world))
     english_word4.grid(column=3, row=random_row_eng4)
     ###################################################################################################################################################################################################
     
@@ -366,7 +366,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
        words_frame.destroy()
        from menu_learnit import Learn_it_main
        Learn_it_main(1)
-    continue_button = Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_f, command = lambda: con_but_fun())
+    continue_button = Button(words_frame, text='continue', bg='black', fg='yellow', font=frist_label.basic_f, command = lambda: con_but_fun())
     continue_button.grid(column=4, row=4, padx = 30, pady= 30)
     words_frame.pack()
  
