@@ -294,7 +294,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
     print('JEBANE IMPORTY')
     frist_label.Learn_it_label.destroy()
     frist_button.spanish_button.destroy()
-    frist_screen.root.withdraw()
+    # frist_screen.root.withdraw()
     second_screen = screen(create_new_screen = 1)
     words_frame = Frame(second_screen.root, bg = 'black')
     for i in range(5):
