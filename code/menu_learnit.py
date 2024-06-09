@@ -41,7 +41,8 @@ class csb():
         print('XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD')
         self.spanish_button.configure(font=frist_label.basic_f)
         self.spanish_button.place(y=160, x=1400)
-        frist_screen.root.mainloop()
+        if __name__ == '__main__':
+          frist_screen.root.mainloop()
 
     
 
