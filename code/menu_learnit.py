@@ -7,12 +7,12 @@ class screen():
   def __init__(self, back_or_not = 0): 
     super().__init__()
    
-    self.root = Tk()
-    if __name__ == 'menu_learnit':
-        try:
-         frist_screen.root.withdraw()
-        except NameError:
-         pass 
+    
+    # if __name__ == 'menu_learnit':
+    #     try:
+    #      frist_screen.root.withdraw()
+    #     except NameError:
+    #      pass 
     if back_or_not == 0:
        self.root = Tk()
        self.root.title('LearnIt!')
@@ -26,8 +26,7 @@ class clil():
        self.basic_f = ('Lionel Classic', 50)
        self.Learn_it_label = Label(frist_screen.root, text='LearnIt!', bg='black', fg='yellow', height=2, width=10)
        self.Learn_it_label.configure(font=self.lil_f)
-       if __name__ == '__main__':
-         self.Learn_it_label.place(y=0, x=725)
+       self.Learn_it_label.place(y=0, x=725)
        
        
 

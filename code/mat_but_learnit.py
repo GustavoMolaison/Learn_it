@@ -289,10 +289,11 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
            unknown_button.configure( fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
-    from menu_learnit import screen, frist_label, frist_button 
+    from menu_learnit import screen, frist_screen, frist_label, frist_button 
     frist_label.Learn_it_label.destroy()
     frist_button.spanish_button.destroy()
-    second_screen = screen
+    frist_screen.root.withdraw()
+    second_screen = screen()
     words_frame = Frame(second_screen.root, bg = 'black')
     for i in range(5):
      words_frame.columnconfigure( i, weight =1, uniform = 'a')
