@@ -7,14 +7,13 @@ class screen():
   def __init__(self, back_or_not = 0): 
     super().__init__()
    
-    
-    
-    if back_or_not == 0:
-       if __name__ == 'menu_learnit':
+    self.root = Tk()
+    if __name__ == 'menu_learnit':
         try:
-         frist_screen.root.destroy()
+         frist_screen.root.withdraw()
         except NameError:
-          pass 
+         pass 
+    if back_or_not == 0:
        self.root = Tk()
        self.root.title('LearnIt!')
        self.root.geometry('1920x1080')
@@ -48,6 +47,5 @@ class csb():
 frist_screen = screen()
 frist_label = clil()
 frist_button = csb()
-if __name__ == 'menu_learnit':
- frist_screen2 = screen()
+
 
