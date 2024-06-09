@@ -290,8 +290,8 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
     from menu_learnit import screen, frist_screen, frist_label, frist_button 
-    frist_label.Learn_it_label.destroy()
-    frist_button.spanish_button.destroy()
+    frist_label.Learn_it_label.forget()
+    frist_button.spanish_button.forget()
     frist_screen.root.withdraw()
     second_screen = screen()
     words_frame = Frame(second_screen.root, bg = 'black')
@@ -365,7 +365,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
        clicked_buttons_count = 0
        stay_green_esp.clear()
        stay_green_eng.clear()
-       words_frame.destroy()
+       words_frame.forget()
        from menu_learnit import Learn_it_main
        Learn_it_main(1)
     continue_button = Button(words_frame, text='continue', bg='black', fg='yellow', font=frist_label.basic_f, command = lambda: con_but_fun())

@@ -37,8 +37,7 @@ class csb():
         self.spanish_button = Button(frist_screen.root, text='Spanish connect!', bg='black', fg='orange', height=1, width=len('Spanish connect'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
         self.spanish_button.configure(font=frist_label.basic_f)
         self.spanish_button.place(y=160, x=1400)
-        if __name__ == '__main__':
-         frist_screen.root.mainloop()
+        frist_screen.root.mainloop()
 
     
 
