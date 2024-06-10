@@ -290,7 +290,8 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
     print('JEBANE IMPORTY22222222222222222222222222222222222')
-    # from menu_learnit import screen, frist_screen, frist_label, frist_button 
+    from menu_learnit import  frist_label, frist_button, frist_screen
+    # from menu_learnit import frist_label
     print('JEBANE IMPORTY')
     frist_label.Learn_it_label.destroy()
     frist_button.spanish_button.destroy()
