@@ -290,7 +290,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
     print('JEBANE IMPORTY22222222222222222222222222222222222')
-    from menu_learnit import  frist_label, frist_button, frist_screen
+    from menu_learnit import screen,  frist_label, frist_button, frist_screen
     # from menu_learnit import frist_label
     print('JEBANE IMPORTY')
     frist_label.Learn_it_label.destroy()
@@ -302,6 +302,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
      words_frame.columnconfigure( i, weight =1, uniform = 'a')
     for i in range(5): 
      words_frame.rowconfigure(i, weight = 1, uniform = 'a')
+    
     
     # RANDOM ORDER OF WORDS##################################################################################################################################################################################
     rng_rows = [0,1,2,3,4]
@@ -361,7 +362,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
 
     # CONTINUE BUTTON
     def con_but_fun():
-       global clicked_buttons_count_eng, clicked_buttons_count_esp, clicked_buttons_count
+       global  clicked_buttons_count_eng, clicked_buttons_count_esp, clicked_buttons_count
        clear()
        clicked_buttons_count_eng = 0
        clicked_buttons_count_esp = 0
