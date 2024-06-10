@@ -46,7 +46,7 @@ class csb():
 
     
 
-
+print('ohujghcoidiz')
 frist_screen = screen()
 frist_label = clil()
 frist_button = csb()
