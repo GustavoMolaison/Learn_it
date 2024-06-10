@@ -36,7 +36,8 @@ class csb():
       def __init__(self):
         super().__init__()   
         print('XXOXOOXOXOXXOXOXOXOXOXOXOXXOXOXOOXOXOXXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXXOXO')
-        from mat_but_learnit import spanish_button_func 
+        if __name__ == '__main__':
+         from mat_but_learnit import spanish_button_func 
         self.spanish_button = tk.Button(frist_screen.root, text='Spanish connect!', bg='black', fg='orange', height=1, width=len('Spanish connect'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
         print('XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD')
         self.spanish_button.configure(font=frist_label.basic_f)

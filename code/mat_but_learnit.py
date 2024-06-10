@@ -2,7 +2,7 @@ import tkinter as tk
 import random
 # from menu_learnit import Learn_it_main
 # from PIL import ImageTk, Image 
-import time
+
 
 global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, previous_eng_word, previous_esp_word, stay_green_esp, stay_green_eng
 clicked_buttons_count_eng: int = 0
@@ -290,7 +290,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
     print('JEBANE IMPORTY22222222222222222222222222222222222')
-    from menu_learnit import screen, frist_screen, frist_label, frist_button 
+    # from menu_learnit import screen, frist_screen, frist_label, frist_button 
     print('JEBANE IMPORTY')
     frist_label.Learn_it_label.destroy()
     frist_button.spanish_button.destroy()
