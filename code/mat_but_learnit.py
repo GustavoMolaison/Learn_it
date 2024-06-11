@@ -375,6 +375,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
     continue_button = tk.Button(words_frame, text='continue', bg='black', fg='yellow', font=frist_label.basic_f, command = lambda: con_but_fun())
     continue_button.grid(column=4, row=4, padx = 30, pady= 30)
     words_frame.pack()
+    words_frame.mainloop()
  
 ###################################################################################################################################################################################################
 
