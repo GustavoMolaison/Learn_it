@@ -6,7 +6,7 @@ class screen():
  
   def __init__(self, back_or_not = 0, create_new_screen = 0): 
     super().__init__()
-    global unknown_screen, frist_label
+    global frist_label
         
     # if __name__ == '__main__' or create_new_screen == 1:
     if back_or_not == 0:
@@ -35,17 +35,58 @@ class clil():
 class csb(): 
       def __init__(self):
         super().__init__()   
-        print('XXOXOOXOXOXXOXOXOXOXOXOXOXXOXOXOOXOXOXXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXXOXO')
+        def Learn_button_com():
+          def back_button():
+             self.frame_learn_button.forget()
+             
+          self.small_f = ('Lionel Classic', 20)
+       
+          self.learn_button.destroy()
+          
+          self.frame_learn_button = tk.Frame( bg = 'black')
+          self.frame_learn_button.propagate(False)
+
+          self.latly_used_frame = tk.Frame(self.frame_learn_button, bg = 'gold')
+          self.latly_used_frame.configure( width=400, height = 500, padx = 25, pady = 25)
+          self.latly_used_frame.propagate(False)
+          for i in range(0):
+              self.latly_used_frame.columnconfigure(i, weight = 1, uniform = 'a')
+          for i in range(4):
+              self.latly_used_frame.rowconfigure(i, weight = 1, uniform = 'a')    
+
+          self.spanish_button = tk.Button(self.latly_used_frame, text='Spanish connect!', bg='black', fg='orange', padx = 10, pady = 10, height=1, width=len('Spanish connect'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
+          self.spanish_button.configure(font=self.small_f)
+          self.spanish_button.grid(column = 1, row = 0)
+          
+          self.back_button = tk.Button(self.frame_learn_button, text = '<---', bg = 'black', fg='yellow', width=10, height=2, command = lambda: back_button() ).place(x = 25, y = 950)
+          
+          self.latly_used = tk.Label(self.frame_learn_button, text = 'Latly used', bg='black', fg='gold',  height=1, width=len('Latly used'))
+          self.latly_used.configure(font=frist_label.basic_f)
+          self.latly_used.place(y=160, x=1350)
+          
+          self.latly_used_frame.place(x = 1390, y = 250)
+          
+        
+          # self.frame_learn_button.pack()
+          # self.frame_learn_button.mainloop()
         if __name__ == '__main__':
          from mat_but_learnit import spanish_button_func 
-        self.spanish_button = tk.Button(frist_screen.root, text='Spanish connect!', bg='black', fg='orange', height=1, width=len('Spanish connect'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
-        print('XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD')
-        self.spanish_button.configure(font=frist_label.basic_f)
-        self.spanish_button.place(y=160, x=1400)
+        # self.spanish_button = tk.Button(frist_screen.root, text='Spanish connect!', bg='black', fg='orange', height=1, width=len('Spanish connect'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
+        self.learn_button = tk.Button(frist_screen.root, text='Learn!', bg='black', fg='orange', height=1, width=len('Learn!'), command= lambda: Learn_button_com())
+        self.learn_button.configure(font=frist_label.basic_f)
+        self.learn_button.place(y=160, x=1670)
         if __name__ == '__main__':
           frist_screen.root.mainloop()
 
-    
+
+
+# def commandside():
+#    if __name__ == '__main__':
+#          from mat_but_learnit import spanish_button_func 
+#    frist_label.Learn_it_label.destroy()
+#    frist_button.spanish_button.destroy()
+#    frist_screen.root.withdraw()
+#    spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
 
 
 frist_screen = screen()

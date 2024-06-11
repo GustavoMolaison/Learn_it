@@ -1,7 +1,6 @@
 import tkinter as tk
 import random
-# from menu_learnit import Learn_it_main
-# from PIL import ImageTk, Image 
+
 
 
 global  clicked_buttons_count_eng, clicked_buttons_count_esp, previous_button, previous_eng_word, previous_esp_word, stay_green_esp, stay_green_eng
@@ -91,13 +90,20 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
 
             if not clicked_buttons_count_eng == 0:
                 clicked_buttons_count_eng = clicked_buttons_count_eng - 1
+
             if not clicked_buttons_count_esp == 0:
                 clicked_buttons_count_esp = clicked_buttons_count_esp - 1
+
             if idiom == 'eng':
                 print('stay green' + str(sg_number))
                 stay_green_eng.append('stay green' + str(sg_number))
+
             if idiom == 'esp':
                 stay_green_esp.append('stay green' + str(sg_number))
+
+            if len(stay_green_eng) == 5 or len(stay_green_esp) == 5:
+               print('nom')
+               continue_button.grid(column=4, row=4, padx = 30, pady= 30)
             clear()
 
 
@@ -289,15 +295,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
            unknown_button.configure( fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
-    print('JEBANE IMPORTY22222222222222222222222222222222222')
-    from menu_learnit import screen,  frist_label, frist_button, frist_screen
-    # from menu_learnit import frist_label
-    print('JEBANE IMPORTY')
-    frist_label.Learn_it_label.destroy()
-    frist_button.spanish_button.destroy()
-    frist_screen.root.withdraw()
-    second_screen = screen(create_new_screen = 1)
-    words_frame = tk.Frame(second_screen.root, bg = 'black')
+    words_frame = tk.Frame( bg = 'black')
     for i in range(5):
      words_frame.columnconfigure( i, weight =1, uniform = 'a')
     for i in range(5): 
@@ -329,28 +327,28 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
     random_row_eng4 = random.choice(rng_rows)
     rng_rows.remove(random_row_eng4)
     ###################################################################################################################################################################################################
-
+    basic_font = ('Lionel Classic', 50)
     # WORD PLACEMENT ##################################################################################################################################################################################
-    spanish_word0 = tk.Button(words_frame, text=spanish_word0_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word0, spanish_word0_world))
+    spanish_word0 = tk.Button(words_frame, text=spanish_word0_world, bg='black', fg='orange', height=1, width=10, font=basic_font, command=lambda:button_connect_spanish(spanish_word0, spanish_word0_world))
     spanish_word0.grid(column=1, row=random_row_esp0, padx = 30, pady= 30)
-    spanish_word1 = tk.Button(words_frame, text=spanish_word1_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word1, spanish_word1_world))
+    spanish_word1 = tk.Button(words_frame, text=spanish_word1_world, bg='black', fg='orange', height=1, width=10, font=basic_font, command=lambda:button_connect_spanish(spanish_word1, spanish_word1_world))
     spanish_word1.grid(column=1, row=random_row_esp1, padx = 30, pady= 30)
-    spanish_word2 = tk.Button(words_frame, text=spanish_word2_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word2, spanish_word2_world))
+    spanish_word2 = tk.Button(words_frame, text=spanish_word2_world, bg='black', fg='orange', height=1, width=10, font=basic_font, command=lambda:button_connect_spanish(spanish_word2, spanish_word2_world))
     spanish_word2.grid(column=1, row=random_row_esp2, padx = 30, pady= 30)
-    spanish_word3 = tk.Button(words_frame, text=spanish_word3_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word3, spanish_word3_world))
+    spanish_word3 = tk.Button(words_frame, text=spanish_word3_world, bg='black', fg='orange', height=1, width=10, font=basic_font, command=lambda:button_connect_spanish(spanish_word3, spanish_word3_world))
     spanish_word3.grid(column=1, row=random_row_esp3, padx = 30, pady= 30)
-    spanish_word4 = tk.Button(words_frame, text=spanish_word4_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_spanish(spanish_word4, spanish_word4_world))
+    spanish_word4 = tk.Button(words_frame, text=spanish_word4_world, bg='black', fg='orange', height=1, width=10, font=basic_font, command=lambda:button_connect_spanish(spanish_word4, spanish_word4_world))
     spanish_word4.grid(column=1, row=random_row_esp4, padx = 30, pady= 30)
     
-    english_word0 = tk.Button(words_frame, text=english_word0_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f,command=lambda:button_connect_english(english_word0, english_word0_world))
+    english_word0 = tk.Button(words_frame, text=english_word0_world, bg='black', fg='orange', height=1, width=10, font=basic_font,command=lambda:button_connect_english(english_word0, english_word0_world))
     english_word0.grid(column=3, row=random_row_eng0)
-    english_word1 = tk.Button(words_frame, text=english_word1_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f,command=lambda:button_connect_english(english_word1, english_word1_world))
+    english_word1 = tk.Button(words_frame, text=english_word1_world, bg='black', fg='orange', height=1, width=10, font=basic_font,command=lambda:button_connect_english(english_word1, english_word1_world))
     english_word1.grid(column=3, row=random_row_eng1)
-    english_word2 = tk.Button(words_frame, text=english_word2_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f,command=lambda:button_connect_english(english_word2, english_word2_world))
+    english_word2 = tk.Button(words_frame, text=english_word2_world, bg='black', fg='orange', height=1, width=10, font=basic_font,command=lambda:button_connect_english(english_word2, english_word2_world))
     english_word2.grid(column=3, row=random_row_eng2)
-    english_word3 = tk.Button(words_frame, text=english_word3_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f,command=lambda:button_connect_english(english_word3, english_word3_world))
+    english_word3 = tk.Button(words_frame, text=english_word3_world, bg='black', fg='orange', height=1, width=10, font=basic_font,command=lambda:button_connect_english(english_word3, english_word3_world))
     english_word3.grid(column=3, row=random_row_eng3)
-    english_word4 = tk.Button(words_frame, text=english_word4_world, bg='black', fg='orange', height=1, width=10, font=frist_label.basic_f, command=lambda:button_connect_english(english_word4, english_word4_world))
+    english_word4 = tk.Button(words_frame, text=english_word4_world, bg='black', fg='orange', height=1, width=10, font=basic_font, command=lambda:button_connect_english(english_word4, english_word4_world))
     english_word4.grid(column=3, row=random_row_eng4)
     ###################################################################################################################################################################################################
     
@@ -370,10 +368,9 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
        stay_green_esp.clear()
        stay_green_eng.clear()
        words_frame.forget()
-    #    import menu_learnit
-    #    Learn_it_main(1)
-    continue_button = tk.Button(words_frame, text='continue', bg='black', fg='yellow', font=frist_label.basic_f, command = lambda: con_but_fun())
-    continue_button.grid(column=4, row=4, padx = 30, pady= 30)
+    
+    continue_button = tk.Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_font, command = lambda: con_but_fun())
+    # continue_button.grid(column=4, row=4, padx = 30, pady= 30)
     words_frame.pack()
     words_frame.mainloop()
  
