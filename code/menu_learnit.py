@@ -47,7 +47,7 @@ class csb():
 
     
 
-print('ohujghcoidiz')
+
 frist_screen = screen()
 print('1')
 frist_label = clil()
