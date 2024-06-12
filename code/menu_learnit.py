@@ -87,7 +87,7 @@ class csb():
              if __name__ == '__main__':
                frist_screen.root.mainloop()
         if importt == True:
-           Learn_button_com()
+            Learn_button_com()
            
  
 
@@ -98,8 +98,7 @@ class csb():
 #    frist_button.spanish_button.destroy()
 #    frist_screen.root.withdraw()
 #    spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
-if not  __name__ == '__main__':
-   Learn_button_com()
+
 
 frist_screen = screen()
 print('1')

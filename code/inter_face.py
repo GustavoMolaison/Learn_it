@@ -2,7 +2,7 @@ import tkinter as tk
 
 
 
-def Learn_button_com(real_frame = None):
+def Learn_button_com2(real_frame = None):
      
             global frame_learn_button
             frame_learn_button = tk.Frame(real_frame)
@@ -11,5 +11,5 @@ def Learn_button_com(real_frame = None):
             # frame_learn_button.pack()
 
       
-Learn_button_com()
+Learn_button_com2()
 
