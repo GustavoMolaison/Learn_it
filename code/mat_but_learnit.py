@@ -295,8 +295,8 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
            unknown_button.configure( fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
-    
-    words_frame = tk.Frame( bg = 'black')
+    from inter_face import frame_learn_button
+    words_frame = tk.Frame(frame_learn_button, bg = 'black')
     for i in range(5):
      words_frame.columnconfigure( i, weight =1, uniform = 'a')
     for i in range(5): 
@@ -372,8 +372,8 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
     
     continue_button = tk.Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_font, command = lambda: con_but_fun())
     # continue_button.grid(column=4, row=4, padx = 30, pady= 30)
-    words_frame.pack()
-    words_frame.mainloop()
+    frame_learn_button.pack()
+    # words_frame.mainloop()
  
 ###################################################################################################################################################################################################
 
