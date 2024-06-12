@@ -33,17 +33,21 @@ class clil():
        
 
 class csb(): 
-      def __init__(self):
+      def __init__(self, importt = False):
         super().__init__()   
+        global Learn_button_com
         def Learn_button_com():
             def back_button():
               frame_learn_button.destroy()
+
             self.small_f = ('Lionel Classic', 20)
             self.normal_f = ('Lionel Classic', 50)
-            from inter_face import Learn_button_com, frame_learn_button
+            from inter_face import Learn_button_com2, frame_learn_button
             from mat_but_learnit import spanish_button_func 
-             
-            Learn_button_com(frist_screen.root)
+            def spanish_but_fun2():
+                frame_learn_button.forget()
+                spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife')
+            Learn_button_com2(frist_screen.root)
             frame_learn_button.pack()
             # self.frame_learn_button = tk.Frame(frist_screen.root)
             # self.frame_learn_button = tk.Frame(width= 1920, height=1080, padx = 25, pady = 25, bg = 'black')
@@ -58,7 +62,7 @@ class csb():
             for i in range(4):
               self.latly_used_frame.rowconfigure(i, weight = 1, uniform = 'a')    
           
-            self.spanish_button = tk.Button(self.latly_used_frame, text='Spanish connect!', bg='black', fg='orange', padx = 10, pady = 10, height=1, width=len('Spanish connect'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
+            self.spanish_button = tk.Button(self.latly_used_frame, text='Spanish connect!', bg='black', fg='orange', padx = 10, pady = 10, height=1, width=len('Spanish connect'), command= lambda: spanish_but_fun2())
             self.spanish_button.configure(font=self.small_f)
             self.spanish_button.grid(column = 1, row = 0)
           
@@ -74,7 +78,7 @@ class csb():
             
         
           
-        if __name__ == '__main__':
+        if __name__ == '__main__' and importt == False:
              
       
              self.learn_button = tk.Button(frist_screen.root, text='Learn!', bg='black', fg='orange', height=1, width=len('Learn!'), command= lambda: Learn_button_com())
@@ -82,8 +86,10 @@ class csb():
              self.learn_button.place(y=160, x=1670)
              if __name__ == '__main__':
                frist_screen.root.mainloop()
-
-
+        if importt == True:
+           Learn_button_com()
+           
+ 
 
 # def commandside():
 #    if __name__ == '__main__':
@@ -92,7 +98,8 @@ class csb():
 #    frist_button.spanish_button.destroy()
 #    frist_screen.root.withdraw()
 #    spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
-
+if not  __name__ == '__main__':
+   Learn_button_com()
 
 frist_screen = screen()
 print('1')
