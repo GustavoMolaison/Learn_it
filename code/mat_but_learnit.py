@@ -295,6 +295,7 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
            unknown_button.configure( fg = 'yellow', command=lambda:button_connect2(unknown_button))  
 
     # SETTING UP SCREEN ###################################################################################################################################################################################################
+    
     words_frame = tk.Frame( bg = 'black')
     for i in range(5):
      words_frame.columnconfigure( i, weight =1, uniform = 'a')
