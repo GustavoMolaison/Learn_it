@@ -368,10 +368,12 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
        clicked_buttons_count = 0
        stay_green_esp.clear()
        stay_green_eng.clear()
-       frame_learn_button.destroy()
-       from congrats import congrat_fun, congrats_frame
-       congrats_frame.pack()
-       congrat_fun()
+       for widget in frame_learn_button.winfo_children():
+                 widget.destroy()
+       frame_learn_button.forget()
+    #    from congrats import congrat_fun, congrats_frame
+    #    congrats_frame.pack()
+    #    congrat_fun()
     continue_button = tk.Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_font, command = lambda: con_but_fun())
     # continue_button.grid(column=4, row=4, padx = 30, pady= 30)
     words_frame.pack()

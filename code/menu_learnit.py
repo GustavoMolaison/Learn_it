@@ -48,7 +48,10 @@ class csb():
                 frame_learn_button.forget()
                 spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife')
             Learn_button_com2(frist_screen.root)
-            frame_learn_button.pack()
+            try:
+             frame_learn_button.pack()
+            except:
+              frame_learn_button.pack()
             # self.frame_learn_button = tk.Frame(frist_screen.root)
             # self.frame_learn_button = tk.Frame(width= 1920, height=1080, padx = 25, pady = 25, bg = 'black')
             # self.frame_learn_button.propagate(False)
