@@ -381,32 +381,80 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
     # words_frame.mainloop()
  
 ###################################################################################################################################################################################################
+# Custom exercise 
+if __name__ == '__main__':
+ def Custom_connect():
+   custom_screen = tk.Tk()
+   custom_screen.geometry('1920x1080')
+   custom_screen.title('custom screen')
+   custom_screen.configure(bg = 'black')
+    
+   
+       
+   def Bulid_button_anim(right_or_left = 'right'):
+      global x_of_bb, x_of_bf, Bulid_frame, y_of_bf, width_of_bf, Right
+      if x_of_bb == 0.001:
+         Right = True
+         x_of_bf = 0
+         y_of_bf = 0
+         width_of_bf = 0
+         print('noway')
 
+         Bulid_frame = tk.Frame(custom_screen, width = width_of_bf, height= 1050, bg = 'DarkOrange4'  )
+         Bulid_frame.place(relx=x_of_bf, rely=y_of_bf)
+       
+      if right_or_left == 'right':
+       if x_of_bb <= 0.2: 
+         width_of_bf += 1.94
+         Bulid_frame.config(width=width_of_bf)
+         Bulid_frame.place(relx=x_of_bf, rely=y_of_bf)
+         x_of_bb += 0.001
+         print(x_of_bb)
+         Bulid_button.place(relx = x_of_bb, rely = y_of_bb)
+         if x_of_bb >= 0.2:
+            custom_screen.after(10,  lambda: Bulid_button_anim('left'))
+         if x_of_bb <= 0.2:   
+          custom_screen.after(10, lambda: Bulid_button_anim('right'))   
+
+      if right_or_left == 'left':
+       if x_of_bb >= 0.001:
+           width_of_bf -= 1.94
+           Bulid_frame.config(width=width_of_bf)
+           Bulid_frame.place(relx=x_of_bf, rely=y_of_bf)
+           x_of_bb -= 0.001
+           print(x_of_bb)
+           Bulid_button.place(relx = x_of_bb, rely = y_of_bb)
+           if x_of_bb > 0.001:
+            custom_screen.after(10,  lambda: Bulid_button_anim('left'))
+           if x_of_bb <= 0.001:
+            custom_screen.after(10,  lambda: Bulid_button_anim('right'))
+           
+
+       
+
+
+
+#    for i in range (4):
+#     custom_screen.columnconfigure(i, weight =1, uniform = 'a')
+#    for i in range (5):
+#     custom_screen.rowconfigure(i, weight =1, uniform = 'a')
+   global x_of_bb
+   x_of_bb = 0.001
+   y_of_bb = 0.4
+   Bulid_button = tk.Button(width=3, height=5, bg = 'yellow', fg = 'black', command = Bulid_button_anim)
+   Bulid_button.place(relx=x_of_bb, rely=y_of_bb )
+    
+   x_of_bf = 0
+   y_of_bf = 0.4
+
+   
+
+
+
+
+   custom_screen.mainloop()
+
+ Custom_connect()
     
 
-# frist page
 
-# def Learn_it_main( back_or_not = 0): 
-#     global Learn_it_label, spanish_button, basic_f, Ltm_screen 
-     
-
-#     global Learn_it_label, spanish_button, basic_f, Ltm_screen
-#     if back_or_not == 0:
-#        Ltm_screen = Tk()
-#        Ltm_screen.title('LearnIt!')
-#        Ltm_screen.geometry('1920x1080')
-#        Ltm_screen.configure(bg='black')
-       
-#     lil_f = ('Kozuka Mincho Pro M', 50, 'bold')
-#     basic_f = ('Lionel Classic', 50)
-#     Learn_it_label = Label(text='LearnIt!', bg='black', fg='yellow', height=2, width=10)
-#     Learn_it_label.configure(font=lil_f)
-#     Learn_it_label.place(y=0, x=725)
-#     spanish_button = Button(text='Spanish!', bg='black', fg='orange', height=1, width=len('Spanish!'), command= lambda: spanish_button_func('pronto', 'soon', 'frio', 'cold', 'calor', 'hot', 'silla', 'chair', 'cuchillo', 'knife'))
-#     spanish_button.configure(font=basic_f)
-#     spanish_button.place(y=160, x=1600)
-
-
-#     Ltm_screen.mainloop()
-
-# Learn_it_main()
