@@ -381,7 +381,9 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
     # words_frame.mainloop()
  
 ###################################################################################################################################################################################################
-# Custom exercise 
+# Custom editing screen
+
+# MAKING SCREEN 
 if __name__ == '__main__':
  def Custom_connect():
    custom_screen = tk.Tk()
@@ -391,18 +393,10 @@ if __name__ == '__main__':
 
    global right_or_left 
    right_or_left = 'right'
-       
+#   ANIMATION#################################################     
    def Bulid_button_anim(xd = True):
       global x_of_bb, x_of_bf, Bulid_frame, y_of_bf, width_of_bf, right_or_left
-    #   if x_of_bb == 0.001:
-         
-    #      x_of_bf = 0
-    #      y_of_bf = 0
-    #      width_of_bf = 0
-    #      print('noway')
-
-    #      Bulid_frame = tk.Frame(custom_screen, width = width_of_bf, height= 1050, bg = 'DarkOrange4'  )
-    #      Bulid_frame.place(relx=x_of_bf, rely=y_of_bf)
+   
       
       if right_or_left == 'right':
        if x_of_bb <= 0.2: 
@@ -415,7 +409,6 @@ if __name__ == '__main__':
          if x_of_bb >= 0.2:
             right_or_left = 'left'
             xd = False
-            # custom_screen.after(2,  lambda: Bulid_button_anim('left'))
          if x_of_bb <= 0.2:   
           custom_screen.after(2, lambda: Bulid_button_anim())   
       if xd == True:
@@ -432,16 +425,35 @@ if __name__ == '__main__':
            if x_of_bb <= 0.001:
             right_or_left = 'right'
             xd = False
-           
+##########################################################################           
+# DRAGABLE WIDGETS
+   import pyautogui
+   class dragging():
+    
 
+     def draggable_new(self, button_name, x_of_cb = 0, y_of_cb = 0, width_cb = 20, height_cb = 3, bg_cb = 'yellow', fg_cb = 'black'):
+      global new_button, root
+      button_name.bind('<B1-Motion>', lambda event: self.on_drag())
+      button_name.bind('<ButtonRelease>', lambda event:  self.on_drop())
+      self.num_list = list(range(130))
+      self.random_num = (random.choice(self.num_list))
+      self.num_list.remove(self.random_num)
+      self.new_button = str(button_name) + str(self.num_list)
+      self.new_button = tk.Button(Bulid_frame, width=width_cb, height=height_cb, bg=bg_cb, fg=fg_cb)
+      self.root = self.new_button.winfo_toplevel()
+
+     def on_drag(self):
+       self.new_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+
+      
+     def on_drop(self):
+       self.new_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+      
        
 
 
 
-#    for i in range (4):
-#     custom_screen.columnconfigure(i, weight =1, uniform = 'a')
-#    for i in range (5):
-#     custom_screen.rowconfigure(i, weight =1, uniform = 'a')
+###########################LEFTMOVABLEWIDGET####################
    global x_of_bb, x_of_bf, width_of_bf, Bulid_frame, y_of_bf
    x_of_bf = 0
    y_of_bf = -432
@@ -450,25 +462,27 @@ if __name__ == '__main__':
    Bulid_frame = tk.Frame(custom_screen, width = width_of_bf, height= 1050, bg = 'DarkOrange4'  )
    Bulid_frame.place(relx=x_of_bf, y=y_of_bf)
     
-   def Custom_button(button_name = 'custombutton', x_of_cb = 0, y_of_cb = 0, width_cb = 20, height_cb = 3, bg_cb = 'yellow', fg_cb = 'black'):
+   def Custom_button(button_name = 'custombutton', x_of_cb = 0, y_of_cb = 0, width_cb = 20, height_cb = 3, bg_cb = 'yellow', fg_cb = 'black', drags = 0):
       
       button_name = tk.Button(Bulid_frame, width=width_cb, height=height_cb, bg=bg_cb, fg=fg_cb)
       button_name.place(x=x_of_cb, y=y_of_cb)
+
+     
+      
+      drags = dragging()
+      drags.draggable_new(button_name = button_name, x_of_cb = x_of_cb, y_of_cb = y_of_cb, width_cb = width_cb, height_cb = height_cb , bg_cb = bg_cb, fg_cb = fg_cb)
+
    y_of_cb11 = 30   
-   for i in range (10):
+   for i in range (3):
       x_of_cb20= 20
       x_of_cb40= 215
-      Custom_button(button_name= 'Custom_button' + str(i) ,x_of_cb=x_of_cb20, y_of_cb= y_of_cb11)
+      Custom_button(button_name= 'Custom_button' + str(i) ,x_of_cb=x_of_cb20, y_of_cb= y_of_cb11, drags = 'drag' + str(i))
       ii = i + 1
-      Custom_button(button_name= 'Custom_button' + str(ii) ,x_of_cb=x_of_cb40, y_of_cb= y_of_cb11)
+      Custom_button(button_name= 'Custom_button' + str(ii) ,x_of_cb=x_of_cb40, y_of_cb= y_of_cb11, drags = 'drag' + str(i))
       y_of_cb11 += 100
    
 
 
-    #   Custom_button(button_name= 'Custom_button1',x_of_cb=20)
-    #   Custom_button(button_name= 'Custom_button2',x_of_cb=215)
-    #   Custom_button(button_name= 'Custom_button3',x_of_cb=20,y_of_cb= 100)
-    #   Custom_button(button_name= 'Custom_button3',x_of_cb=215,y_of_cb= 100)
    x_of_bb = 0.001
    y_of_bb = 0.4
    Bulid_button = tk.Button(width=3, height=5, bg = 'yellow', fg = 'black', command = Bulid_button_anim)
@@ -477,7 +491,7 @@ if __name__ == '__main__':
    x_of_bf = 0
    y_of_bf = 0.4
 
-   
+########################################################################################   
 
 
 

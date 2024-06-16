@@ -1,6 +1,6 @@
 from tkinter import *
 import pickle
-from Learn_it_api import Learn_it_main
+# from Learn_it_api import Learn_it_main
 
 
 def login_error(le_variable):
