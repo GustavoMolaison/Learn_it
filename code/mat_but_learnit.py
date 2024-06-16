@@ -462,7 +462,7 @@ if __name__ == '__main__':
       ii = i + 1
       Custom_button(button_name= 'Custom_button' + str(ii) ,x_of_cb=x_of_cb40, y_of_cb= y_of_cb11)
       y_of_cb11 += 100
-
+   
 
 
     #   Custom_button(button_name= 'Custom_button1',x_of_cb=20)
