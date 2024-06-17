@@ -427,28 +427,52 @@ if __name__ == '__main__':
             xd = False
 ##########################################################################           
 # DRAGABLE WIDGETS
-   import pyautogui
+   
    class dragging():
     
+    
+    
+     def draggable_action(self, button_name,  x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, i = 0):
+       global count_drag
+       count_drag = 1 
 
-     def draggable_new(self, button_name, x_of_cb = 0, y_of_cb = 0, width_cb = 20, height_cb = 3, bg_cb = 'yellow', fg_cb = 'black'):
-      global new_button, root
-      button_name.bind('<B1-Motion>', lambda event: self.on_drag())
-      button_name.bind('<ButtonRelease>', lambda event:  self.on_drop())
-      self.num_list = list(range(130))
-      self.random_num = (random.choice(self.num_list))
-      self.num_list.remove(self.random_num)
-      self.new_button = str(button_name) + str(self.num_list)
-      self.new_button = tk.Button(Bulid_frame, width=width_cb, height=height_cb, bg=bg_cb, fg=fg_cb)
-      self.root = self.new_button.winfo_toplevel()
-
-     def on_drag(self):
-       self.new_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-
+       button_name.bind('<B1-Motion>', lambda event: self.on_drag(button_name = button_name, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0))
+       button_name.bind('<ButtonRelease>', lambda event:  self.on_drop(button_name = button_name, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb))
       
-     def on_drop(self):
-       self.new_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+     def on_drag(self, button_name, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, i = 0, type_of_dragging = False):
+       global count_drag 
+       
+       if type_of_dragging == False:     
+        if count_drag == 1:
+         self.new_button = str(button_name) + str(i)
+         self.new_button = tk.Button(Bulid_frame, width=width_nb, height=height_nb, bg=bg_nb, fg=fg_nb)
+         self.root = self.new_button.winfo_toplevel()
+         count_drag = count_drag + 1
+         i = i + 1
+        self.new_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
       
+       if type_of_dragging == True:
+         if count_drag == 1: 
+          self.button_name1 = str(button_name) + str(i)
+          self.button_name1 = tk.Button(Bulid_frame, width=width_nb, height=height_nb, bg=bg_nb, fg=fg_nb)
+          self.root = self.button_name1.winfo_toplevel()
+          count_drag = count_drag + 1
+          i = i + 1
+         self.button_name1.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty()) 
+
+     def on_drop(self, button_name, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, type_of_dragging = False, ):
+       global count_drag
+       if type_of_dragging == False:
+         count_drag = 1 
+         self.new_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+         self.new_button.bind('<B1-Motion>', lambda event: self.on_drag(button_name = self.new_button, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
+         self.new_button.bind('<ButtonRelease>', lambda event:  self.on_drop(button_name = self.new_button, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb,type_of_dragging = True))
+      
+       if type_of_dragging == True:
+         count_drag = 1 
+         self.button_name1.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+         self.button_name1.bind('<B1-Motion>', lambda event: self.on_drag(button_name = self.button_name1, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
+         self.button_name1.bind('<ButtonRelease>', lambda event:  self.on_drop(button_name = self.button_name1, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, type_of_dragging = True))
        
 
 
@@ -470,7 +494,9 @@ if __name__ == '__main__':
      
       
       drags = dragging()
-      drags.draggable_new(button_name = button_name, x_of_cb = x_of_cb, y_of_cb = y_of_cb, width_cb = width_cb, height_cb = height_cb , bg_cb = bg_cb, fg_cb = fg_cb)
+
+      drags.draggable_action(button_name = button_name, x_of_nb =x_of_cb, y_of_nb=y_of_cb, width_nb = width_cb, height_nb = height_cb, bg_nb =bg_cb, fg_nb = fg_cb)
+      
 
    y_of_cb11 = 30   
    for i in range (3):
