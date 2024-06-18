@@ -427,67 +427,76 @@ if __name__ == '__main__':
             xd = False
 ##########################################################################           
 # DRAGABLE WIDGETS
-   
+   global name_count
+   name_count = 1
+
    class dragging():
-    
+     
     
     
      def draggable_action(self, button_name,  x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, i = 0):
        global count_drag
        count_drag = 1 
 
-       button_name.bind('<B1-Motion>', lambda event: self.on_drag(button_name = button_name, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0))
-       button_name.bind('<ButtonRelease>', lambda event:  self.on_drop(button_name = button_name, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb))
+       button_name.bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0))
+       button_name.bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb))
       
-     def on_drag(self, button_name, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, i = 0, type_of_dragging = False):
-       global count_drag 
+     def on_drag(self, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, i = 0, type_of_dragging = False):
+       global count_drag, name_count, name_count_save
        
        if type_of_dragging == False:     
         if count_drag == 1:
-         self.new_button = str(button_name) + str(i)
-         self.new_button = tk.Button(Bulid_frame, width=width_nb, height=height_nb, bg=bg_nb, fg=fg_nb)
-         self.root = self.new_button.winfo_toplevel()
+         
+         self.name_dict = {}
+         self.name_dict['string{0}'.format(name_count)] = 'new_button' + str(name_count)
+         self.name_dict['string{0}'.format(name_count)] = tk.Button(Bulid_frame, width=width_nb, height=height_nb, bg=bg_nb, fg=fg_nb)
+         name_count_save = name_count
+         
+         self.root = self.name_dict['string{0}'.format(name_count_save)].winfo_toplevel()
          count_drag = count_drag + 1
-         i = i + 1
-        self.new_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+         name_count = name_count + 1
+        self.name_dict['string{0}'.format(name_count_save)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
       
        if type_of_dragging == True:
          if count_drag == 1: 
-          self.button_name1 = str(button_name) + str(i)
-          self.button_name1 = tk.Button(Bulid_frame, width=width_nb, height=height_nb, bg=bg_nb, fg=fg_nb)
-          self.root = self.button_name1.winfo_toplevel()
+          
+          self.root = self.name_dict['string{0}'.format(name_count_save)].winfo_toplevel()
           count_drag = count_drag + 1
-          i = i + 1
-         self.button_name1.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty()) 
+          
+        
+         self.name_dict['string{0}'.format(name_count_save)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty()) 
 
-     def on_drop(self, button_name, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, type_of_dragging = False, ):
+     def on_drop(self, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, type_of_dragging = False, ):
        global count_drag
        if type_of_dragging == False:
          count_drag = 1 
-         self.new_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-         self.new_button.bind('<B1-Motion>', lambda event: self.on_drag(button_name = self.new_button, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
-         self.new_button.bind('<ButtonRelease>', lambda event:  self.on_drop(button_name = self.new_button, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb,type_of_dragging = True))
+         self.name_dict['string{0}'.format(name_count_save)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+         self.name_dict['string{0}'.format(name_count_save)].bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
+         self.name_dict['string{0}'.format(name_count_save)].bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb,type_of_dragging = True))
       
        if type_of_dragging == True:
          count_drag = 1 
-         self.button_name1.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-         self.button_name1.bind('<B1-Motion>', lambda event: self.on_drag(button_name = self.button_name1, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
-         self.button_name1.bind('<ButtonRelease>', lambda event:  self.on_drop(button_name = self.button_name1, x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, type_of_dragging = True))
+         self.name_dict['string{0}'.format(name_count_save)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+         self.name_dict['string{0}'.format(name_count_save)].bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
+         self.name_dict['string{0}'.format(name_count_save)].bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, type_of_dragging = True))
        
 
 
 
 ###########################LEFTMOVABLEWIDGET####################
-   global x_of_bb, x_of_bf, width_of_bf, Bulid_frame, y_of_bf
+   global x_of_bb, x_of_bf, width_of_bf, Bulid_frame, y_of_bf, iss
    x_of_bf = 0
    y_of_bf = -432
    width_of_bf = 0
+   iss = 1
     
    Bulid_frame = tk.Frame(custom_screen, width = width_of_bf, height= 1050, bg = 'DarkOrange4'  )
    Bulid_frame.place(relx=x_of_bf, y=y_of_bf)
     
-   def Custom_button(button_name = 'custombutton', x_of_cb = 0, y_of_cb = 0, width_cb = 20, height_cb = 3, bg_cb = 'yellow', fg_cb = 'black', drags = 0):
-      
+   def Custom_button(button_nam = 'custombutton', x_of_cb = 0, y_of_cb = 0, width_cb = 20, height_cb = 3, bg_cb = 'yellow', fg_cb = 'black', drags = 0):
+      global iss
+    #   button_name = button_nam + str(iss)
+    #   iss = i + 1
       button_name = tk.Button(Bulid_frame, width=width_cb, height=height_cb, bg=bg_cb, fg=fg_cb)
       button_name.place(x=x_of_cb, y=y_of_cb)
 
@@ -502,9 +511,9 @@ if __name__ == '__main__':
    for i in range (3):
       x_of_cb20= 20
       x_of_cb40= 215
-      Custom_button(button_name= 'Custom_button' + str(i) ,x_of_cb=x_of_cb20, y_of_cb= y_of_cb11, drags = 'drag' + str(i))
+      Custom_button(button_nam= 'Custom_button' + str(i) ,x_of_cb=x_of_cb20, y_of_cb= y_of_cb11, drags = 'drag' + str(i))
       ii = i + 1
-      Custom_button(button_name= 'Custom_button' + str(ii) ,x_of_cb=x_of_cb40, y_of_cb= y_of_cb11, drags = 'drag' + str(i))
+      Custom_button(button_nam= 'Custom_button' + str(ii) ,x_of_cb=x_of_cb40, y_of_cb= y_of_cb11, drags = 'drag' + str(i))
       y_of_cb11 += 100
    
 
