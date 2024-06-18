@@ -441,44 +441,47 @@ if __name__ == '__main__':
        button_name.bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0))
        button_name.bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb))
       
-     def on_drag(self, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, i = 0, type_of_dragging = False):
-       global count_drag, name_count, name_count_save
+     def on_drag(self, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, i = 0, type_of_dragging = False, string = 'string1'):
+       global count_drag, nc, string_save
        
-       if type_of_dragging == False:     
+       if type_of_dragging == False:  
+        global name_count   
         if count_drag == 1:
          
+        
          self.name_dict = {}
          self.name_dict['string{0}'.format(name_count)] = 'new_button' + str(name_count)
          self.name_dict['string{0}'.format(name_count)] = tk.Button(Bulid_frame, width=width_nb, height=height_nb, bg=bg_nb, fg=fg_nb)
-         name_count_save = name_count
+         string_save = self.name_dict['new_button' + str(name_count)]
          
-         self.root = self.name_dict['string{0}'.format(name_count_save)].winfo_toplevel()
+         self.root = self.name_dict['string{0}'.format(name_count)].winfo_toplevel()
          count_drag = count_drag + 1
-         name_count = name_count + 1
-        self.name_dict['string{0}'.format(name_count_save)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-      
+         
+        self.name_dict['string{0}'.format(name_count)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+        
+        name_count =+ 1
        if type_of_dragging == True:
          if count_drag == 1: 
           
-          self.root = self.name_dict['string{0}'.format(name_count_save)].winfo_toplevel()
+          self.root = self.name_dict[string].winfo_toplevel()
           count_drag = count_drag + 1
           
         
-         self.name_dict['string{0}'.format(name_count_save)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty()) 
-
-     def on_drop(self, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, type_of_dragging = False, ):
-       global count_drag
+         self.name_dict[string].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty()) 
+       
+     def on_drop(self, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, type_of_dragging = False,  string = 'string1' ):
+       global count_drag, name_count 
        if type_of_dragging == False:
          count_drag = 1 
-         self.name_dict['string{0}'.format(name_count_save)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-         self.name_dict['string{0}'.format(name_count_save)].bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
-         self.name_dict['string{0}'.format(name_count_save)].bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb,type_of_dragging = True))
-      
+         self.name_dict['string{0}'.format(name_count)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+         self.name_dict['string{0}'.format(name_count)].bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True, string = string_save  ))
+         self.name_dict['string{0}'.format(name_count)].bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb,type_of_dragging = True, string = string_save))
+         name_count =+ 1
        if type_of_dragging == True:
          count_drag = 1 
-         self.name_dict['string{0}'.format(name_count_save)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-         self.name_dict['string{0}'.format(name_count_save)].bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
-         self.name_dict['string{0}'.format(name_count_save)].bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, type_of_dragging = True))
+         self.name_dict[string].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+         self.name_dict[string].bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
+         self.name_dict[string].bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, type_of_dragging = True))
        
 
 
