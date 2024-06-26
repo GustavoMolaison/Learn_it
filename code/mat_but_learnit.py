@@ -371,15 +371,37 @@ def spanish_button_func(spanish_word0_world, english_word0_world, spanish_word1_
        for widget in frame_learn_button.winfo_children():
                  widget.destroy()
        frame_learn_button.forget()
-    #    from congrats import congrat_fun, congrats_frame
-    #    congrats_frame.pack()
-    #    congrat_fun()
+       
     continue_button = tk.Button(words_frame, text='continue', bg='black', fg='yellow', font=basic_font, command = lambda: con_but_fun())
-    # continue_button.grid(column=4, row=4, padx = 30, pady= 30)
+    
     words_frame.pack()
     frame_learn_button.pack()
-    # words_frame.mainloop()
+   
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###################################################################################################################################################################################################
 # Custom editing screen
 
@@ -536,7 +558,35 @@ if __name__ == '__main__':
 
    custom_screen.mainloop()
 
- Custom_connect()
+#  Custom_connect()
     
 
+def new_game():
+   ng_root = tk.Tk()
+   ng_root.geometry('1920x1080')
+   ng_root.config(bg='black')
+   
 
+   def actual_game():
+      ng_frame = tk.Frame( bg='red')
+      ng_frame.config(width=1920, height=1080)
+      for i in range(4):
+         ng_frame.rowconfigure(i, weight = 1, uniform = 'a')
+      for i in range(4):
+         ng_frame.columnconfigure(i, weight = 1, uniform = 'a')
+        
+      normal_f = ('Lionel Classic', 50)
+      exercise = tk.Label(ng_frame, text = 'Yea what the hell im doing', fg = 'yellow', bg = 'black')
+      exercise.config(font=normal_f)
+      exercise.grid(row=1, column =1  )
+
+      ng_text = tk.Entry(ng_frame, bg='black', width = 100)
+      ng_text.grid(row = 4, column= 1)
+
+      ng_frame.pack()
+
+
+   actual_game()
+   ng_root.mainloop()
+   
+new_game()
