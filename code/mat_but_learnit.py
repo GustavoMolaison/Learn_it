@@ -449,63 +449,60 @@ if __name__ == '__main__':
             xd = False
 ##########################################################################           
 # DRAGABLE WIDGETS
-   global name_count
-   name_count = 1
+   global button_holded
+   
+   button_holded = False
 
    class dragging():
      
     
-    
-     def draggable_action(self, button_name,  x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, i = 0):
-       global count_drag, fake_count
-       fake_count = 1
-       count_drag = 1 
-       button_name.bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, button_name = button_name))
-       button_name.bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb))
-      
-     def on_drag(self, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb,button_name, i = 0, type_of_dragging = False, string = 'string1' ):
-       global count_drag, fake_count
+    #  def Button_placing(self, button_name, x_of_nb, y_of_nb, width_nb, height_nb, bg_nb, fg_nb): 
        
-       if type_of_dragging == False:  
-        global name_count   
-        if count_drag == 1:
+       
+       def draggable_action(self, button_name, x_of_nb, y_of_nb, width_nb, height_nb, bg_nb, fg_nb):
+         global count_drag, count_drag2
+         count_drag = 1
+         count_drag2 = 1
+         self.button_name = button_name
          
-        
-         self.name_dict = {}
-         self.name_dict[str(self + name_count)] = ['button{0}'.format(name_count)]
-         self.name_dict[str(self + name_count)] = tk.Button(Bulid_frame, width=width_nb, height=height_nb, bg=bg_nb, fg=fg_nb)
-         
-         self.root = button_name.winfo_toplevel()
-         count_drag = count_drag + 1
 
-         
-        self.name_dict[str(self) + str(name_count)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-        fake_count = name_count
-        name_count = name_count + 1
-       if type_of_dragging == True:
-         if count_drag == 1: 
-          
-          self.root = self.name_dict[str(self + name_count)].winfo_toplevel()
-          count_drag = count_drag + 1
-          
-        
-         self.name_dict[str(self + name_count)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty()) 
-       
-     def on_drop(self, x_of_nb, y_of_nb,width_nb, height_nb, bg_nb,fg_nb, type_of_dragging = False,  string = 'string1' ):
-       global count_drag, name_count 
-       if type_of_dragging == False:
-         count_drag = 1 
-         self.name_dict[str(self) + str(fake_count)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-         self.name_dict[str(self) + str(fake_count)].bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True, string = string_save  ))
-         self.name_dict[str(self) + str(fake_count)].bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb,type_of_dragging = True, string = string_save))
-         name_count =+ 1
-       if type_of_dragging == True:
-         count_drag = 1 
-         self.name_dict[str(self) + str(fake_count)].place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
-         self.name_dict[str(self) + str(fake_count)].bind('<B1-Motion>', lambda event: self.on_drag( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, i=0, type_of_dragging = True ))
-         self.name_dict[str(self) + str(fake_count)].bind('<ButtonRelease>', lambda event:  self.on_drop( x_of_nb = x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb,  height_nb =  height_nb,  bg_nb =  bg_nb, fg_nb = fg_nb, type_of_dragging = True))
-       
+         self.button_name.bind('<B1-Motion>',  lambda event: self.on_drag(button_name = button_name, x_of_nb= x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb, height_nb =height_nb, bg_nb =bg_nb, fg_nb = fg_nb))
+         self.button_name.bind('<ButtonRelease>',  lambda event: self.on_drop(button_name = button_name, x_of_nb= x_of_nb, y_of_nb = y_of_nb, width_nb = width_nb, height_nb =height_nb, bg_nb =bg_nb, fg_nb = fg_nb))
 
+       def on_drag(self, button_name, x_of_nb, y_of_nb, width_nb, height_nb, bg_nb, fg_nb):
+          global count_drag
+          if count_drag == 1:
+            self.move_button = tk.Button(Bulid_frame, width=width_nb, height=height_nb, bg=bg_nb, fg=fg_nb)
+            self.root = self.move_button.winfo_toplevel()
+            count_drag = count_drag + 1
+          
+          
+          self.move_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+        #   self.move_button.bind('<B1-Motion>', on_drag2)
+        #   self.move_button.bind('<ButtonRelease>', on_drop2)
+           
+       def on_drop(self, button_name, x_of_nb, y_of_nb, width_nb, height_nb, bg_nb, fg_nb):
+          global count_drag
+          count_drag = 1
+          self.move_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+          self.move_button.bind('<B1-Motion>', lambda event: self.on_drag2())
+          self.move_button.bind('<ButtonRelease>', lambda event: self.on_drop2())
+
+
+
+       def on_drag2(self):
+          global count_drag2
+          if count_drag2 == 1:
+            self.root = self.move_button.winfo_toplevel()
+            count_drag2 = count_drag2 + 1
+          self.move_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+       
+       def on_drop2(self):
+          global count_drag2
+          count_drag2 = 1
+          self.move_button.place(x=self.root.winfo_pointerx()-self.root.winfo_rootx(), y=self.root.winfo_pointery() - self.root.winfo_rooty())
+
+       
 
 
 ###########################LEFTMOVABLEWIDGET####################
